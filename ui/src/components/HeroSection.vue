@@ -31,7 +31,7 @@
             </div>
         </div>
         <!-- Turuncu Alan -->
-        <div class="w-full py-6 relative z-20" style="background-color: rgba(253, 126, 20, 0.9)">
+        <div class="w-full py-7 relative z-20" style="background-color: rgba(253, 126, 20, 0.9)">
             <div class="max-w-5xl mx-auto text-center px-4">
                 <h2 class="font-bold text-2xl md:text-4xl text-white mb-2 font-inter">
                     Gemeinsam Weg und Wissen Teilen
