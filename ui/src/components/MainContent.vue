@@ -1,7 +1,7 @@
 <template>
-  <main class="max-w-6xl mx-auto px-4 md:px-8">
+  <main class="max-w-6xl mx-auto px-4 md:px-8 z-10 relative">
     <!-- Hakkımızda Bölümü -->
-    <section class="mb-16">
+    <section class="mb-16 ">
       <h2 class="font-bold text-3xl md:text-5xl text-orange-600 mb-7 mt-8 font-inter tracking-tight">
         Hier kommen Sie weiter
       </h2>

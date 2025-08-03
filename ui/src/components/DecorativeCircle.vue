@@ -1,8 +1,9 @@
 <template>
   <div
     :style="circleStyle"
-    class="pointer-events-none select-none"
+    class="pointer-events-none select-none "
     aria-hidden="true"
+  
   ></div>
 </template>
 
