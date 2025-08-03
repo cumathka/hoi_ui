@@ -1,7 +1,24 @@
-<!-- src/views/InfoView.vue -->
 <template>
-  <div class="max-w-4xl mx-auto p-8">
-    <h1 class="text-3xl font-bold text-cyan-700 mb-4">Informationen</h1>
-    <p>Hier finden Sie alle wichtigen Informationen für Ihren Start in Uri und der Schweiz.</p>
-  </div>
+  <div id="map" style="height: 400px; width: 100%;"></div>
 </template>
+
+<script>
+import { onMounted } from 'vue'
+import * as L from 'leaflet'
+import 'leaflet/dist/leaflet.css'
+
+export default {
+  name: 'TheMap',
+  setup() {
+    onMounted(() => {
+      const map = L.map('map').setView([46.8806, 8.6446], 10)
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map)
+      L.marker([46.8806, 8.6446]).addTo(map)
+        .bindPopup('Uri, Schweiz')
+        .openPopup()
+    })
+  }
+}
+</script>
