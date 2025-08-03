@@ -1,31 +1,38 @@
 <template>
   <div class="landing-page relative overflow-x-hidden">
-    <!-- Daireler -->
     <DecorativeCircle
-      :size="400"
+      :baseSize="400"
+      :smSize="120"
       color="rgba(255, 243, 205, 1)"
+      transparentColor="rgba(255, 243, 205, 0.4)"
       top="40%"
-      left="-250px"
+      left="-180px"
     />
     <DecorativeCircle
-      :size="350"
+      :baseSize="350"
+      :smSize="100"
       color="rgba(255, 243, 205, 1)"
+      transparentColor="rgba(255, 243, 205, 0.3)"
       top="55%"
+      right="-150px"
+    />
+    <DecorativeCircle
+      :baseSize="250"
+      :smSize="80"
+      color="rgba(255, 229, 208, 1)"
+      transparentColor="rgba(255, 229, 208, 0.3)"
+      top="67%"
+      left="-100px"
+    />
+    <DecorativeCircle
+      :baseSize="475"
+      :smSize="140"
+      color="rgba(255, 229, 208, 1)"
+      transparentColor="rgba(255, 229, 208, 0.3)"
+      top="32%"
       right="-200px"
     />
-    <DecorativeCircle
-      :size="250"
-      color="rgba(255, 229, 208, 1)"
-      top="67%"
-      left="-150px"
-    />
-    <DecorativeCircle
-      :size="475"
-      color="rgba(255, 229, 208, 1)"
-      top="32%"
-      right="-300px"
-    />
-
+   
     <TheNavbar />
     <div>
       <router-view v-if="$route.path !== '/'" />
