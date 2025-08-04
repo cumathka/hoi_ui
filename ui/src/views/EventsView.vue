@@ -13,7 +13,7 @@
       <!-- Hero Overlay -->
       <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2/5 min-w-[200px] bg-cyan-900/80 p-8 rounded-2xl text-center text-white font-bold pointer-events-none md:w-3/5 md:p-4">
         <div class="flex items-center justify-center gap-4 md:gap-2">
-          <img src="@/assets/images/logo1.png" alt="Uri Flag" class="h-20 w-auto m-0 shadow-md pointer-events-auto object-contain md:h-8" />
+          <img src="@/assets/images/logo1.png" alt="Uri Flag" class="h-20 w-auto m-0 shadow-md pointer-events-auto object-contain md:h-12" />
           <h1 class="m-0 text-5xl font-bold drop-shadow-lg md:text-2xl">Integrationsevents</h1>
         </div>
       </div>
