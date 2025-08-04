@@ -33,7 +33,7 @@
       <div class="py-10">
         <!-- Başlık ve Açıklama -->
         <header class="mb-8">
-          <h1 class="text-3xl font-bold text-orange-700 mb-4">Wissenswertes über Neuankömmlinge in Uri</h1>
+          <h1 class="text-4xl text-orange-600 mb-4">Wissenswertes über Neuankömmlinge in Uri</h1>
         </header>
         <section class="mb-8 bg-white rounded-lg p-6 shadow">
           <p class="text-lg mb-4">
@@ -47,7 +47,7 @@
         
         <!-- Erwerbstätigkeit nach sieben Jahren -->
         <header class="mb-4">
-          <h2 class="text-2xl font-bold text-orange-700 mb-2">Erwerbstätigkeit nach sieben Jahren</h2>
+          <h2 class="text-2xl font-bold text-orange-600 mb-2">Erwerbstätigkeit nach sieben Jahren</h2>
         </header>
         <section class="mb-8 bg-white rounded-lg p-6 shadow">
           <p class="text-base mb-4">
@@ -73,7 +73,7 @@
           <div class="mt-2 text-sm text-gray-600 text-right">
             Quelle: 
             <a href="https://www.sem.admin.ch/sem/de/home/integration-einbuergerung/integrationsfoerderung/monitoring/erwerb-va-fl.html" 
-               target="_blank" rel="noopener noreferrer" class="text-orange-700 hover:underline">
+               target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">
               Staatssekretariat für Migration SEM
             </a>
           </div>
@@ -81,7 +81,7 @@
         
         <!-- Erwerbstätigkeit aktuell -->
         <header class="mb-4">
-          <h2 class="text-2xl font-bold text-orange-700 mb-2">Erwärbstätigkeit aktuell</h2>
+          <h2 class="text-2xl font-bold text-orange-600 mb-2">Erwärbstätigkeit aktuell</h2>
         </header>
         <div class="my-8 text-center bg-white p-6 rounded-lg shadow">
           <img 
@@ -106,7 +106,7 @@
           <div class="mt-2 text-sm text-gray-600 text-right">
             Quelle: 
             <a href="https://www.sem.admin.ch/sem/de/home/integration-einbuergerung/integrationsfoerderung/monitoring/erwerb-va-fl.html" 
-               target="_blank" rel="noopener noreferrer" class="text-orange-700 hover:underline">
+               target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:underline">
               Staatssekretariat für Migration SEM
             </a>
             <span class="ml-2">(Stand: 11.03.2025)</span>
@@ -115,7 +115,7 @@
 
         <!-- Tipps für den Alltag in Uri -->
         <header class="mb-4">
-          <h2 class="text-2xl font-bold text-orange-700 mb-2">Tipps für den Alltag in Uri</h2>
+          <h2 class="text-2xl font-bold text-orange-600 mb-2">Tipps für den Alltag in Uri</h2>
         </header>
         <section class="mb-8 bg-white rounded-lg p-6 shadow">
           <p class="text-base mb-4">
@@ -125,7 +125,7 @@
           </p>
         </section>
         <header class="mb-4">
-          <h3 class="text-xl font-bold text-orange-700 mb-2">Teilnahme und Sprache</h3>
+          <h3 class="text-xl font-bold text-orange-600 mb-2">Teilnahme und Sprache</h3>
         </header>
         <section class="mb-8 bg-white rounded-lg p-6 shadow">
           <p class="text-base mb-4">
@@ -137,7 +137,7 @@
           </p>
         </section>
         <header class="mb-4">
-          <h2 class="text-2xl font-bold text-orange-700 mb-2">Urner Feste und Bräuche</h2>
+          <h2 class="text-2xl font-bold text-orange-600 mb-2">Urner Feste und Bräuche</h2>
         </header>
         <section class="mb-8 bg-white rounded-lg p-6 shadow">
           <p class="text-base mb-4">
@@ -149,36 +149,36 @@
             Nachbarschaft, beim Spazieren oder auf Wanderungen. Gegrüsst wird mit "Griäzi" und "Guete Tag".
             <br><br>
             Weitere Informationen über Urner Bräuche und gelebte Traditionen finden Sie auf der 
-            <router-link to="/learning" class="text-orange-700 hover:underline">Lernen-Seite</router-link>.
+            <router-link to="/learning" class="text-orange-600 hover:underline">Lernen-Seite</router-link>.
           </p>
         </section>
         <header class="mb-4">
-          <h1 class="text-2xl font-bold text-orange-700 mb-2">Nützliche Links</h1>
+          <h1 class="text-2xl font-bold text-orange-600 mb-2">Nützliche Links</h1>
         </header>
         <section class="mb-8">
           <div class="flex flex-col gap-6">
             <div class="p-5 bg-white rounded-lg shadow">
-              <h4 class="text-orange-700 mb-2 font-semibold">Fachstelle Integration und Vernetzung Uri</h4>
+              <h4 class="text-orange-600 mb-2 font-semibold">Fachstelle Integration und Vernetzung Uri</h4>
               <p class="mb-2">Die Fachstelle Integration und Vernetzung Uri ist Ihre Anlaufstelle, wenn sie Beratungen in Anspruch nehmen möchten, oder wenn Sie sich über bestehenden Angebote im Kanton Uri informieren möchten.</p>
-              <a href="https://www.ur.ch/unterinstanzen/1436" target="_blank" class="text-orange-700 font-medium hover:underline">www.ur.ch/unterinstanzen/1436</a>
+              <a href="https://www.ur.ch/unterinstanzen/1436" target="_blank" class="text-orange-600 font-medium hover:underline">www.ur.ch/unterinstanzen/1436</a>
             </div>
             <div class="p-5 bg-white rounded-lg shadow">
-              <h4 class="text-orange-700 mb-2 font-semibold">Integration Uri</h4>
+              <h4 class="text-orange-600 mb-2 font-semibold">Integration Uri</h4>
               <p class="mb-2">Die Integrations-Agenda beschreibt den best-case Integrationsprozess, den "Soll-Integrationsprozess" für die 16-25- Jährige. Die einzelnen Phasen der Integration werden im Dokument "Integrationsagenda Schweiz: Bericht der Koordinationsgruppe vom 1. März 2018" ausführlich beschrieben.</p>
-              <a href="https://www.integration-uri.ch" target="_blank" class="text-orange-700 font-medium hover:underline">www.integration-uri.ch</a>
+              <a href="https://www.integration-uri.ch" target="_blank" class="text-orange-600 font-medium hover:underline">www.integration-uri.ch</a>
             </div>
             <div class="p-5 bg-white rounded-lg shadow">
-              <h4 class="text-orange-700 mb-2 font-semibold">Staatssekretariat für Migration SEM</h4>
+              <h4 class="text-orange-600 mb-2 font-semibold">Staatssekretariat für Migration SEM</h4>
               <p class="mb-2">Weiterführende Informationen zur Integrationsagenda:</p>
               <div class="flex flex-col gap-2">
-                <a href="https://www.sem.admin.ch/sem/fr/home/integration-einbuergerung/integrationsfoerderung/kantonale-programme/integrationsagenda" target="_blank" class="text-orange-700 font-medium hover:underline">Integrationsagenda</a>
-                <a href="https://www.sem.admin.ch/dam/sem/de/data/integration/agenda/ber-koordinationsgruppe-integrationsagenda-d.pdf.download.pdf/ber-koordinationsgruppe-integrationsagenda-d.pdf" target="_blank" class="text-orange-700 font-medium hover:underline">Bericht der Koordinationsgruppe (PDF)</a>
+                <a href="https://www.sem.admin.ch/sem/fr/home/integration-einbuergerung/integrationsfoerderung/kantonale-programme/integrationsagenda" target="_blank" class="text-orange-600 font-medium hover:underline">Integrationsagenda</a>
+                <a href="https://www.sem.admin.ch/dam/sem/de/data/integration/agenda/ber-koordinationsgruppe-integrationsagenda-d.pdf.download.pdf/ber-koordinationsgruppe-integrationsagenda-d.pdf" target="_blank" class="text-orange-600 font-medium hover:underline">Bericht der Koordinationsgruppe (PDF)</a>
               </div>
             </div>
             <div class="p-5 bg-white rounded-lg shadow">
-              <h4 class="text-orange-700 mb-2 font-semibold">Familien Uri</h4>
+              <h4 class="text-orange-600 mb-2 font-semibold">Familien Uri</h4>
               <p class="mb-2">Familien Uri ist eine Plattform für Familienevents, Betreuungsangebote und Bildungsangebote für Familien im Kanton Uri.</p>
-              <a href="https://www.familien-uri.ch" target="_blank" class="text-orange-700 font-medium hover:underline">www.familien-uri.ch</a>
+              <a href="https://www.familien-uri.ch" target="_blank" class="text-orange-600 font-medium hover:underline">www.familien-uri.ch</a>
             </div>
           </div>
         </section>

@@ -28,9 +28,9 @@
     </div>
 
     <!-- Sayfa İçeriği -->
-    <div class="max-w-5xl mx-auto px-5 py-10">
+    <div class="max-w-6xl mx-auto px-5 py-10">
       <header class="mb-8">
-        <h1 class="text-3xl font-bold text-orange-700 mb-4">Netzwerken und Gemeinschaft erleben</h1>
+        <h1 class="text-4xl  text-orange-600 mb-4">Netzwerken und Gemeinschaft erleben</h1>
       </header>
       <section class="mb-8 bg-white rounded-lg p-6 shadow">
         <p class="text-lg mb-4 text-gray-700 text-justify">
@@ -47,7 +47,7 @@
         <div class="bg-white rounded-xl shadow hover:shadow-lg transition-transform hover:-translate-y-1 flex flex-col">
           <img src="@/assets/images/lern1.png" class="w-full h-48 object-cover rounded-t-xl" alt="Deutschkurse">
           <div class="p-6 flex-1 flex flex-col">
-            <h5 class="text-xl font-semibold text-orange-700 mb-2">Deutschkurse</h5>
+            <h5 class="text-xl font-semibold text-orange-600 mb-2">Deutschkurse</h5>
             <p class="mb-3 text-gray-700 flex-1">
               Das Verstehen und Sprechen der Deutschen Sprache ist ein wichtiger Schritt, um sich in Uri zurecht zu finden und Kontakte mit Urnerinnen und Urnern zu knüpfen.
             </p>
@@ -66,7 +66,7 @@
         <div class="bg-white rounded-xl shadow hover:shadow-lg transition-transform hover:-translate-y-1 flex flex-col">
           <img src="@/assets/images/lern2.png" class="w-full h-48 object-cover rounded-t-xl" alt="Lebenslauf">
           <div class="p-6 flex-1 flex flex-col">
-            <h5 class="text-xl font-semibold text-orange-700 mb-2">Lebenslauf verbessern</h5>
+            <h5 class="text-xl font-semibold text-orange-600 mb-2">Lebenslauf verbessern</h5>
             <p class="mb-3 text-gray-700 flex-1">
               Ein professioneller Lebenslauf ist Ihre Visitenkarte im Bewerbungsprozess. Hier finden Sie Hilfe bei der Erstellung und Optimierung Ihrer Bewerbungsunterlagen.
             </p>
@@ -82,7 +82,7 @@
         <div class="bg-white rounded-xl shadow hover:shadow-lg transition-transform hover:-translate-y-1 flex flex-col">
           <img src="@/assets/images/lern3.png" class="w-full h-48 object-cover rounded-t-xl" alt="Kultur">
           <div class="p-6 flex-1 flex flex-col">
-            <h5 class="text-xl font-semibold text-orange-700 mb-2">Schweizer- und Urner Kultur</h5>
+            <h5 class="text-xl font-semibold text-orange-600 mb-2">Schweizer- und Urner Kultur</h5>
             <p class="mb-3 text-gray-700 flex-1">
               Als Gründungskanton ist Uri seit 1291 ein Teil der Schweizer Eidgenossenschaft. Der Kanton ist reich an Kulturgeschichte und Traditionen.
             </p>
@@ -98,7 +98,7 @@
         <div class="bg-white rounded-xl shadow hover:shadow-lg transition-transform hover:-translate-y-1 flex flex-col">
           <img src="@/assets/images/lern4.png" class="w-full h-48 object-cover rounded-t-xl" alt="Weiterbildungen">
           <div class="p-6 flex-1 flex flex-col">
-            <h5 class="text-xl font-semibold text-orange-700 mb-2">Weiterbildungen</h5>
+            <h5 class="text-xl font-semibold text-orange-600 mb-2">Weiterbildungen</h5>
             <p class="mb-3 text-gray-700 flex-1">
               Lebenslanges Lernen ist der Schlüssel zum beruflichen Erfolg. Entdecken Sie vielfältige Weiterbildungsangebote im Kanton Uri.
             </p>

@@ -10,7 +10,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
         <div class="text-center px-4">
           <h5 class="text-black mb-3 font-bold">Kontakt</h5>
-          <p class="text-black">+41 100 2064 5533</p>
+          <p class="text-black">+41 76 603 70 20</p>
           <p class="text-black">info@hoiuri.ch</p>
           <div class="flex justify-center gap-3 mt-3">
             <a href="#" class="text-black text-2xl hover:opacity-80"><i class="bi bi-facebook"></i></a>

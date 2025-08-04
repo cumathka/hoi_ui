@@ -30,7 +30,7 @@
     <!-- Sayfa İçeriği -->
     <div class="max-w-5xl mx-auto px-5 py-10">
       <header class="mb-8">
-        <h1 class="text-3xl font-bold text-orange-700 mb-4">Netzwerken und Gemeinschaft erleben</h1>
+        <h1 class="text-4xl  text-orange-600 mb-4">Netzwerken und Gemeinschaft erleben</h1>
       </header>
       <section class="mb-8 bg-white rounded-lg p-6 shadow">
         <p class="text-lg mb-4 text-gray-700 text-justify">
