@@ -11,6 +11,10 @@
   --blue-100: #e0f2fe;
   --blue-600: #2563eb;
   --gray-600: #4b5563;
+  --hero-bg-cyan: rgba(8,121,144,0.8);
+  --btn-main-bg: var(--cyan-700, #0e7490);
+  --btn-main-color: #fff;
+  --btn-main-border: var(--cyan-700, #0e7490);
 
   /* Font ailesi ve boyutları örnek: */
   --text-h1-font-family: 'Inter', 'Arial', sans-serif;
@@ -60,6 +64,11 @@ input, button, select, textarea {
   color: var(--blue-600) !important;
 }
 
+.bg-hero-cyan {
+  background-color: rgba(8,121,144,0.8);
+}
+
+
 /* hero overlay stili: */
 .hero-overlay {
   position: absolute;
@@ -98,8 +107,7 @@ input, button, select, textarea {
 
 .hero-overlay h1 {
   margin: 0;
-  font-size: 5em; /* Increased from 2em */
-  font-weight: bold;
+  font-size: 4em; /* Increased from 2em */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -140,6 +148,24 @@ input, button, select, textarea {
 input, button, select, textarea {
   font-family: inherit;
 }
+
+.btn {
+  background: transparent;
+  color: var(--btn-main-bg, #0e7490);
+  border: 2px solid var(--btn-main-bg, #0e7490);
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  cursor: pointer;
+  outline: none;
+}
+.btn:hover,
+.btn:focus {
+  background: var(--btn-main-bg, #0e7490);
+  color: #fff;
+  border-color: var(--btn-main-bg, #0e7490);
+}
+
 
 /* Responsive başlıklar için örnek: */
 @media (max-width: 768px) {

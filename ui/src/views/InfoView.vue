@@ -11,11 +11,10 @@
         alt="Information"
       />
       <!-- Hero Overlay -->
-      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2/5 min-w-[200px] bg-cyan-900/80 p-8 rounded-2xl text-center text-white font-bold pointer-events-none
-                  md:w-3/5 md:p-4">
-        <div class="flex items-center justify-center gap-4 md:gap-2">
-          <img src="@/assets/images/logo1.png" alt="Uri Flag" class="h-30 w-auto m-0 shadow-md pointer-events-auto object-contain md:h-12" />
-          <h1 class="m-0 text-5xl  drop-shadow-lg md:text-5xl">Fakten und Links</h1>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2/5 min-w-[200px] p-8 rounded-2xl text-center text-white pointer-events-none hero-overlay">
+        <div class="flex items-center justify-center gap-4">
+          <img src="@/assets/images/logo1.png" alt="Uri Flag" class="h-20 w-auto m-0 shadow-md pointer-events-auto object-contain" />
+          <h1 class="m-0 text-4xl drop-shadow-lg font-normal">Fakten und Links</h1>
         </div>
       </div>
       <!-- Breadcrumb -->
@@ -47,7 +46,7 @@
         
         <!-- Erwerbstätigkeit nach sieben Jahren -->
         <header class="mb-4">
-          <h2 class="text-2xl font-bold text-orange-600 mb-2">Erwerbstätigkeit nach sieben Jahren</h2>
+          <h2 class="text-2xl font-normal text-orange-600 mb-2">Erwerbstätigkeit nach sieben Jahren</h2>
         </header>
         <section class="mb-8 bg-white rounded-lg p-6 shadow">
           <p class="text-base mb-4">
@@ -81,7 +80,7 @@
         
         <!-- Erwerbstätigkeit aktuell -->
         <header class="mb-4">
-          <h2 class="text-2xl font-bold text-orange-600 mb-2">Erwärbstätigkeit aktuell</h2>
+          <h2 class="text-2xl font-normal text-orange-600 mb-2">Erwärbstätigkeit aktuell</h2>
         </header>
         <div class="my-8 text-center bg-white p-6 rounded-lg shadow">
           <img 
@@ -115,7 +114,7 @@
 
         <!-- Tipps für den Alltag in Uri -->
         <header class="mb-4">
-          <h2 class="text-2xl font-bold text-orange-600 mb-2">Tipps für den Alltag in Uri</h2>
+          <h2 class="text-2xl font-normal text-orange-600 mb-2">Tipps für den Alltag in Uri</h2>
         </header>
         <section class="mb-8 bg-white rounded-lg p-6 shadow">
           <p class="text-base mb-4">
@@ -125,7 +124,7 @@
           </p>
         </section>
         <header class="mb-4">
-          <h3 class="text-2xl font-bold text-orange-600 mb-2">Teilnahme und Sprache</h3>
+          <h3 class="text-2xl font-normal text-orange-600 mb-2">Teilnahme und Sprache</h3>
         </header>
         <section class="mb-8 bg-white rounded-lg p-6 shadow">
           <p class="text-base mb-4">
@@ -137,7 +136,7 @@
           </p>
         </section>
         <header class="mb-4">
-          <h2 class="text-2xl font-bold text-orange-600 mb-2">Urner Feste und Bräuche</h2>
+          <h2 class="text-2xl font-normal text-orange-600 mb-2">Urner Feste und Bräuche</h2>
         </header>
         <section class="mb-8 bg-white rounded-lg p-6 shadow">
           <p class="text-base mb-4">
@@ -153,7 +152,7 @@
           </p>
         </section>
         <header class="mb-4">
-          <h1 class="text-2xl font-bold text-orange-600 mb-2">Nützliche Links</h1>
+          <h1 class="text-2xl font-normal text-orange-600 mb-2">Nützliche Links</h1>
         </header>
         <section class="mb-8">
           <div class="flex flex-col gap-6">
