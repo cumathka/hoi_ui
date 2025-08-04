@@ -6,7 +6,7 @@
       color="rgba(255, 243, 205, 1)"
       transparentColor="rgba(255, 243, 205, 0.4)"
       top="40%"
-      left="-180px"
+      left="-200px"
     />
     <DecorativeCircle
       :baseSize="350"
@@ -14,7 +14,7 @@
       color="rgba(255, 243, 205, 1)"
       transparentColor="rgba(255, 243, 205, 0.3)"
       top="55%"
-      right="-150px"
+      right="-175px"
     />
     <DecorativeCircle
       :baseSize="250"
@@ -22,7 +22,7 @@
       color="rgba(255, 229, 208, 1)"
       transparentColor="rgba(255, 229, 208, 0.3)"
       top="67%"
-      left="-100px"
+      left="-125px"
     />
     <DecorativeCircle
       :baseSize="475"
@@ -30,7 +30,7 @@
       color="rgba(255, 229, 208, 1)"
       transparentColor="rgba(255, 229, 208, 0.3)"
       top="32%"
-      right="-200px"
+      right="-237px"
     />
    
     <TheNavbar />

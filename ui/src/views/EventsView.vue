@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full min-h-screen bg-gray-50">
+  <div class="relative w-full min-h-screen">
     <!-- Hero Görsel ve Overlay -->
     <div class="relative w-full overflow-hidden">
       <img 
