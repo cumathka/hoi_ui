@@ -60,6 +60,82 @@ input, button, select, textarea {
   color: var(--blue-600) !important;
 }
 
+/* hero overlay stili: */
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%; /* Reduced from 50% */
+  min-width: 200px; /* Reduced from 300px */
+  background: rgba(8, 121, 144, 0.8); /* Şeffaf mavi */
+  /* Changed from blue to dark gray */
+  /*background: rgba(40, 40, 40, 0.7);  Changed from blue to dark gray */
+  padding: 30px; /* Reduced padding */
+  border-radius: 20px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-family: var(--text-h1-font-family);
+  font-weight: var(--text-h1-font-weight);
+  pointer-events: none;
+}
+
+.overlay-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.logo {
+  height: 80px;
+  width: auto;
+  margin: 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  pointer-events: auto;
+  object-fit: contain;
+}
+
+.hero-overlay h1 {
+  margin: 0;
+  font-size: 5em; /* Increased from 2em */
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.breadcrumb {
+  padding: 15px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.breadcrumb a {
+  color: #666;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+:root {
+  --text-h1-font-family: 'Arial', sans-serif;
+  --text-h1-font-weight: 700;
+  --text-h1-font-size: 2rem;
+  --text-regular-font-family: 'Arial', sans-serif;
+  --text-regular-font-weight: 400;
+  --text-regular-font-size: 1rem;
+  --text-regular-line-height: 1.5;
+  --orange-600: #c25e00;
+  --secondary-color: #f5f5f5;
+}
+
 /* Bootstrap ve Tailwind birlikte kullanılıyorsa, input ve button'larda font-family düzeltmesi: */
 input, button, select, textarea {
   font-family: inherit;
