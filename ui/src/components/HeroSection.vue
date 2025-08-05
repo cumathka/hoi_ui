@@ -32,7 +32,7 @@
                 <h1 class="text-h3 hero-h1 text-white mb-2">
                     Gemeinsam Weg und Wissen Teilen
                 </h1>
-                <p class="body-lead text-white  transition-all duration-500" :key="currentIndex">
+                <p class="body-lead-2 text-white  transition-all duration-500" :key="currentIndex">
                     {{ translations[currentIndex].text }}
                 </p>
             </div>

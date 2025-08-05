@@ -39,6 +39,7 @@
   --text-4xl-size: 36px; /* text-4xl için eklendi */
   --text-regular-size: 20px;
   --body-lead-size: 20px;
+  --body-lead-size2: 30px;
   --body-regular-size: 16px;
   
   /* Component değişkenleri */
@@ -139,6 +140,13 @@ input, button, select, textarea {
   line-height: 1.5;
 }
 
+.body-lead-2{
+  font-family: var(--font-secondary);
+  font-size: var(--body-lead-size2);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
 .body-regular {
   font-family: var(--font-secondary);
   font-size: var(--body-regular-size);
@@ -162,7 +170,7 @@ input, button, select, textarea {
   width: 40%;
   min-width: 200px;
   padding: 2rem;
-  border-radius: var(--border-radius-2xl);
+  border-radius: var(--border-radius-xl);
   text-align: center;
   color: var(--white);
   background: var(--hero-overlay-bg);
