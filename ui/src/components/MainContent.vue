@@ -1,11 +1,11 @@
 <template>
-  <main class="max-w-6xl mx-auto px-4 md:px-8 z-10 relative">
+  <main class="container relative z-10">
     <!-- Hakkımızda Bölümü -->
-    <section class="mb-16 ">
-      <h2 class=" text-4xl md:text-6xl text-orange-600 mb-7 mt-8 font-inter tracking-tight">
+    <section class="mb-16">
+      <h2 class="text-h1 text-orange-600 mb-7 mt-8">
         Hier kommen Sie weiter
       </h2>
-      <p class="text-base md:text-lg text-gray-800 leading-relaxed font-normal font-sans">
+      <p class="text-regular text-gray-900 leading-relaxed">
         Wir freuen uns, Sie auf unserer Plattform begrüssen zu dürfen! Wir wissen, dass der Start in einem
         neuen Land viele Herausforderungen mit sich bringt, aber auch unzählige Chancen bietet.
         <br><br>
@@ -26,16 +26,16 @@
           v-for="(card, index) in cards" 
           :key="index"
           :to="card.route"
-          class="transition-transform duration-200 hover:scale-105"
+          class="card-link"
         >
           <div :class="[
-            'rounded-2xl p-6 flex flex-col items-center justify-center h-full text-center',
-            index % 2 ? 'bg-cyan-600' : 'bg-cyan-700'
+            'card-item',
+            index % 2 ? 'card-cyan-light' : 'card-cyan-dark'
           ]">
             <div class="mb-5">
               <img :src="card.icon" :alt="card.title" class="w-20 h-20 object-contain" />
             </div>
-            <h3 class="font-semibold text-lg text-white mt-2 font-inter tracking-tight">
+            <h3 class="text-h5 text-white mt-2">
               {{ card.title }}
             </h3>
           </div>
@@ -45,10 +45,10 @@
     
     <!-- Etkinlikler Bölümü -->
     <section class="mb-16">
-      <h2 class="text-4xl md:text-6xl text-orange-600 mb-7 font-inter tracking-tight">
+      <h2 class="text-h1 text-orange-600 mb-7">
         Events
       </h2>
-      <p class="text-base md:text-lg text-gray-800 leading-relaxed font-normal font-sans">
+      <p class="text-regular text-gray-900 leading-relaxed">
         Entdecken Sie Veranstaltungen in Uri und Umgebung, die Ihnen helfen, neue Kontakte zu knüpfen und sich
         zu integrieren.
       </p>

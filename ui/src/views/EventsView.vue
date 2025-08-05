@@ -11,15 +11,16 @@
         alt="Events"
       />
       <!-- Hero Overlay -->
-      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2/5 min-w-[200px] p-8 rounded-2xl text-center text-white pointer-events-none hero-overlay">
+      <div class="hero-overlay-small">
         <div class="flex items-center justify-center gap-4">
           <img src="@/assets/images/logo1.png" alt="Uri Flag" class="h-20 w-auto m-0 shadow-md pointer-events-auto object-contain" />
-          <h1 class="m-0 text-4xl drop-shadow-lg font-normal">Integrationsevents</h1>
+          <h1 class="text-white m-0 drop-shadow-lg">Integrationsevents</h1>
         </div>
       </div>
+
       <!-- Breadcrumb -->
-      <div class="max-w-5xl mx-auto px-5">
-        <nav class="py-4 text-sm text-gray-600 flex items-center gap-2">
+      <div class="container">
+        <nav class="breadcrumb">
           <router-link to="/" class="hover:underline">Home</router-link>
           <span>&gt;</span>
           <router-link to="/events" class="hover:underline">Events</router-link>
@@ -28,59 +29,62 @@
     </div>
 
     <!-- Sayfa İçeriği -->
-    <div class="max-w-5xl mx-auto px-5 py-10">
-      <header class="mb-8">
-        <h1 class="text-4xl text-orange-600 mb-4">Netzwerken und Gemeinschaft erleben</h1>
-      </header>
-      <section class="mb-8 bg-white rounded-lg p-6 shadow">
-        <p class="text-lg mb-4 text-gray-700 text-justify">
-          Veranstaltungen sind eine wunderbare Möglichkeit, neue Menschen kennenzulernen und sich in der Gemeinschaft zu integrieren.
-          Auf dieser Seite finden Sie eine Übersicht über Networking-Events, Career Cafés und Tandem-Programme in Uri.
-          Diese Veranstaltungen bieten Ihnen die Gelegenheit, Kontakte zu knüpfen, Erfahrungen auszutauschen und sich in einem
-          unterstützenden Umfeld weiterzuentwickeln. Kommen Sie vorbei und werden Sie Teil unserer lebendigen Gemeinschaft!
-        </p>
+    <div class="container">
+      <div class="py-10">
+        <header class="mb-8">
+          <h1 class="text-h1 text-orange-600 mb-4">Netzwerken und Gemeinschaft erleben</h1>
+        </header>
 
-        <!-- Event Kategorileri -->
-        <div class="flex flex-wrap gap-2 mb-6">
-          <button 
-            v-for="category in categories" 
-            :key="category.id"
-            @click="selectCategory(category.id)"
-            :class="[
-              'btn',
-              'px-4 py-2',
-              selectedCategory === category.id
-                ? 'selected-btn'
-                : ''
-            ]"
-            style="border-radius:9999px;"
-          >
-            {{ category.name }}
-          </button>
-        </div>
+        <section class="content-section">
+          <p class="body-lead mb-4">
+            Veranstaltungen sind eine wunderbare Möglichkeit, neue Menschen kennenzulernen und sich in der Gemeinschaft zu integrieren.
+            Auf dieser Seite finden Sie eine Übersicht über Networking-Events, Career Cafés und Tandem-Programme in Uri.
+            Diese Veranstaltungen bieten Ihnen die Gelegenheit, Kontakte zu knüpfen, Erfahrungen auszutauschen und sich in einem
+            unterstützenden Umfeld weiterzuentwickeln. Kommen Sie vorbei und werden Sie Teil unserer lebendigen Gemeinschaft!
+          </p>
 
-        <!-- Event Listesi -->
-        <div class="mt-4 rounded-lg shadow">
-          <div v-for="(events, date) in filteredEventsByCategory" :key="date" class="mb-4 border border-gray-100 rounded-lg overflow-hidden">
-            <div 
-              class="flex justify-between items-center px-6 py-4 bg-gray-100 cursor-pointer hover:bg-gray-200 transition-colors"
-              @click="toggleEventDetails(date)"
+          <!-- Event Kategorileri -->
+          <div class="flex flex-wrap gap-2 mb-6">
+            <button 
+              v-for="category in categories" 
+              :key="category.id"
+              @click="selectCategory(category.id)"
+              :class="[
+                'btn',
+                'px-4 py-2',
+                selectedCategory === category.id
+                  ? 'selected-btn'
+                  : ''
+              ]"
+              style="border-radius:9999px;"
             >
-              <h3 class="text-lg font-semibold text-cyan-700">{{ date }}</h3>
-              <span :class="['transition-transform', expandedDate === date ? 'rotate-180' : '']">▼</span>
-            </div>
-            <div v-if="expandedDate === date" class="px-6 py-4 bg-white">
-              <div v-for="event in events" :key="event.id" class="mb-6 last:mb-0 bg-gray-50 p-4 rounded-lg shadow-sm">
-                <h4 class="text-cyan-700 text-lg font-bold mb-1">{{ event.title }}</h4>
-                <p class="text-sm text-gray-600 mb-1">{{ event.time }}</p>
-                <p class="text-sm text-gray-700 mb-1">📍 {{ event.location }}</p>
-                <p class="text-gray-700 mb-2">{{ event.description }}</p>
-                <button class="btn px-6 py-2" style="border-radius:0.5rem;">Anmelden</button>
+              {{ category.name }}
+            </button>
+          </div>
+
+          <!-- Event Listesi -->
+          <div class="mt-4 rounded-lg shadow">
+            <div v-for="(events, date) in filteredEventsByCategory" :key="date" class="mb-4 border border-gray-100 rounded-lg overflow-hidden">
+              <div 
+                class="flex justify-between items-center px-6 py-4 bg-gray-100 cursor-pointer hover:bg-gray-200 transition-colors"
+                @click="toggleEventDetails(date)"
+              >
+                <h3 class="text-h5 text-cyan-700">{{ date }}</h3>
+                <span :class="['transition-transform', expandedDate === date ? 'rotate-180' : '']">▼</span>
+              </div>
+              <div v-if="expandedDate === date" class="px-6 py-4 bg-white">
+                <div v-for="event in events" :key="event.id" class="mb-6 last:mb-0 bg-gray-50 p-4 rounded-lg shadow-sm">
+                  <h4 class="text-h5 text-cyan-700 mb-1">{{ event.title }}</h4>
+                  <p class="body-small text-gray-600 mb-1">{{ event.time }}</p>
+                  <p class="body-small text-gray-700 mb-1">📍 {{ event.location }}</p>
+                  <p class="body-regular text-gray-700 mb-2">{{ event.description }}</p>
+                  <button class="btn px-6 py-2" style="border-radius:0.5rem;">Anmelden</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   </div>
 </template>
@@ -184,7 +188,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>
