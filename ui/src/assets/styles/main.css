@@ -105,6 +105,11 @@ input, button, select, textarea {
   line-height: 1.15;
 }
 
+.hero-h1{
+  font-size: 56px;
+  font-family: var(--font-primary);
+}
+
 .text-h5 {
   font-family: var(--font-secondary);
   font-size: var(--text-h5-size);

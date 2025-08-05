@@ -29,10 +29,10 @@
         <!-- Turuncu Alan -->
         <div class="orange-section">
             <div class="max-w-5xl mx-auto text-center px-4">
-                <h1 class="text-h3 text-white mb-2">
+                <h1 class="text-h3 hero-h1 text-white mb-2">
                     Gemeinsam Weg und Wissen Teilen
                 </h1>
-                <p class="body-lead text-white transition-all duration-500" :key="currentIndex">
+                <p class="body-lead text-white  transition-all duration-500" :key="currentIndex">
                     {{ translations[currentIndex].text }}
                 </p>
             </div>
