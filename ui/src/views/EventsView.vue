@@ -32,7 +32,7 @@
     <div class="container">
       <div class="py-10">
         <header class="mb-8">
-          <h1 class="text-h1 text-orange-600 mb-4">Netzwerken und Gemeinschaft erleben</h1>
+          <h1 class="text-h3 text-orange-600 mb-4">Netzwerken und Gemeinschaft erleben</h1>
         </header>
 
         <section class="content-section">
