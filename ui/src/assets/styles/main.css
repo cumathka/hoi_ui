@@ -167,16 +167,24 @@ input, button, select, textarea {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40%;
+  width: 30%;
   min-width: 200px;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: var(--border-radius-xl);
   text-align: center;
   color: var(--white);
   background: var(--hero-overlay-bg);
   backdrop-filter: blur(1px);
   pointer-events: none;
+
+  /* Flexbox ile ortalama */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+
 
 /* Hero overlay içindeki h1 için özel stil */
 .hero-overlay-small h1 {
