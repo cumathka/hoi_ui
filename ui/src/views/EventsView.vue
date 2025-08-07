@@ -76,7 +76,7 @@
                 <div v-for="event in events" :key="event.id" class="mb-6 last:mb-0 bg-gray-50 p-4 rounded-lg shadow-sm">
                   <h4 class="text-h5 text-cyan-700 mb-1">{{ event.title }}</h4>
                   <p class="body-small text-gray-600 mb-1">{{ event.time }}</p>
-                  <p class="body-small text-gray-700 mb-1">📍 {{ event.location }}</p>
+                  <p class="body-small text-gray-700 mb-1" v-if="event.location">📍 {{ event.location }}</p>
                   <p class="body-regular text-gray-700 mb-2">{{ event.description }}</p>
                   <button class="btn px-6 py-2" style="border-radius:0.5rem;">Anmelden</button>
                 </div>
@@ -101,59 +101,150 @@ export default {
         { id: 'all', name: 'Alle Events' },
         { id: 'beruf', name: 'Berufsmesse' },
         { id: 'sprache', name: 'Sprachcafé' },
-        { id: 'kurs', name: 'Konversationskurse' },
+        { id: 'kurs', name: 'Kurse & Jugendtreff' },
         { id: 'schnupper', name: 'Schnuppertage' },
-        { id: 'sport', name: 'Sportevents' }
+        { id: 'sport', name: 'Sportevents' },
+        { id: 'kultur', name: 'Kulturelles' },
+        { id: 'ausflug', name: 'Ausflüge & Wanderungen' },
+        { id: 'beratung', name: 'Beratung' }
       ],
       events: {
-        'April 2025': [
+        'August 2025': [
           {
             id: 1,
-            category: 'beruf',
-            title: 'Berufsmesse Uri 2025',
-            time: '09:00 - 17:00',
-            location: 'Messe Uri, Altdorf',
-            description: 'Grosse Berufsmesse mit Ausbildungsmöglichkeiten und Karrierechancen.'
-          }
-        ],
-        'Mai 2025': [
+            category: 'kurs',
+            title: 'treffpunkt26 Wiedereröffnung',
+            time: 'ab 11. August',
+            location: 'Hagenstr. 26, Altdorf',
+            description: 'Der treffpunkt26 hat ab dem Montag, 11. August 2025, wieder geöffnet.'
+          },
           {
             id: 2,
-            category: 'sprache',
-            title: 'Internationales Sprachcafé',
-            time: '14:00 - 16:00',
-            location: 'Kulturhaus Uri, Altdorf',
-            description: 'Sprachenaustausch in entspannter Atmosphäre.'
-          }
-        ],
-        'Juni 2025': [
+            category: 'sport',
+            title: 'Yoga mit Olena',
+            time: 'jeden Dienstag, 18:00 Uhr',
+            location: 'Zentrum Sternen, Axenstr. 6, 6454 Flüelen',
+            description: 'Für alle. 10 Franken pro 4 Yogalektionen.'
+          },
           {
             id: 3,
-            category: 'kurs',
-            title: 'Deutsch Konversationskurs A2/B1',
-            time: '18:00 - 19:30',
-            location: 'VHS Uri',
-            description: 'Praktischer Konversationskurs für Fortgeschrittene.'
-          }
-        ],
-        'Juli 2025': [
+            category: 'sport',
+            title: 'Fussball',
+            time: 'jeden Mittwoch, 15:00 - 16:30 Uhr',
+            location: 'Turnhalle Hagenschulhaus, Bahnhofstrasse 36, Altdorf',
+            description: 'Für SRK Klient:innen. Gratis.'
+          },
           {
             id: 4,
-            category: 'schnupper',
-            title: 'Schnuppertag Gesundheitsberufe',
-            time: '09:00 - 15:00',
-            location: 'Kantonsspital Uri',
-            description: 'Einblick in verschiedene Gesundheitsberufe.'
-          }
-        ],
-        'August 2025': [
+            category: 'kurs',
+            title: 'Offener Jugendtreff',
+            time: 'jeden Mittwoch, 14:00 - 16:30 Uhr',
+            location: 'Bunker, Winkel, Altdorf oder Bunker, Schulanlage Gehren, Flüelen',
+            description: 'Für 12 - 16-jährige. Gratis.'
+          },
           {
             id: 5,
             category: 'sport',
-            title: 'Internationales Fussballturnier',
-            time: '13:00 - 18:00',
-            location: 'Sportanlage Schützenmatte',
-            description: 'Freundschaftsturnier mit Teams aus der Region.'
+            title: 'Pilates mit Sevim',
+            time: 'jeden Mittwoch und Donnerstag, 17:30 – 18:30 Uhr',
+            location: 'Zentrum Sternen, Axenstr. 6, 6454 Flüelen',
+            description: 'Für SRK-Klient:innen. Gratis. Mitbringen: Yogamatte oder Badetuch und Wasser.'
+          },
+          {
+            id: 6,
+            category: 'sport',
+            title: 'Tischtennis-Kurs',
+            time: 'jeden Freitag, 15:00 - 17:00 Uhr',
+            location: 'Zentrum Sternen, Axenstr. 6, Flüelen',
+            description: 'Für SRK Klient:innen. Gratis.'
+          },
+          {
+            id: 7,
+            category: 'kurs',
+            title: 'Offener Jugendtreff',
+            time: 'jeden Freitag, 19:00 - 22:00 Uhr',
+            location: 'Bunker, Winkel, Altdorf oder Bunker, Schulanlage Gehren, Flüelen',
+            description: 'Für 12 - 16-jährige. Gratis.'
+          },
+          {
+            id: 8,
+            category: 'sport',
+            title: 'Unihockey in Schattdorf',
+            time: 'jeden Samstag, 16:45 – 19:00 Uhr',
+            location: 'Gräwimatt-Turnhalle, Schulhausstrasse 30, Schattdorf',
+            description: 'Für alle. Gratis.'
+          },
+          {
+            id: 9,
+            category: 'kultur',
+            title: 'Bundesfeier am 1. August',
+            time: 'Freitag, 1. August, ab 10:00 Uhr',
+            location: 'Zentrum von Altdorf',
+            description: 'Für alle. Gratis.'
+          },
+          {
+            id: 10,
+            category: 'kultur',
+            title: 'Altdorfer Fiirabig',
+            time: 'Freitag, 8. August, ab 16:00 Uhr',
+            location: 'Unterlehn, Altdorf',
+            description: 'Für alle. Gratis.'
+          },
+          {
+            id: 11,
+            category: 'ausflug',
+            title: 'Ausflug und Besichtigung Alp Hinterfeld mit Picknick',
+            time: 'Mittwoch, 13. August, ca. 09:00 - 15:00 Uhr',
+            location: 'Alp Hinterfeld',
+            description: 'Für SRK Klient:innen. Gratis. Anmeldung bis am 6. August bei Rahel Feiler: rahel.feiler@redcross.ch. Die Teilnehmendenzahl ist beschränkt. Weitere Informationen nach Anmeldung.'
+          },
+          {
+            id: 12,
+            category: 'kultur',
+            title: 'Alpentöne Altdorf 2025',
+            time: '14. - 16. August, ganztätgig',
+            location: 'Altdorf',
+            description: 'Es gibt an diversen Orten Gratiskonzerte auf dem Lehn, im Garten der Musikschule, der Klangspaziergang und die Ausstellung zu KI & Volksmusik. Alle farbig markierten Veranstaltungen sind gratis.'
+          },
+          {
+            id: 13,
+            category: 'ausflug',
+            title: 'Leichte Wanderung: Erstfeld Wilerli - Oberwiler - Zieriberg - Erstfeld',
+            time: 'Sonntag, 17. August',
+            location: 'Erstfeld',
+            description: 'Für SRK-Klient:innen. 5.00 Franken. Anmeldung per Whatsapp bei Regula Zberg 079 721 73 68. Bitte Name, Vorname und Wohnort angeben sowie ob Sie ein Halbtax haben. Der Treffpunkt und die genaue Zeit werden nach Anmeldung bekannt gegeben.'
+          },
+          {
+            id: 14,
+            category: 'ausflug',
+            title: 'Schwere Wanderung: Erstfeld Wilerli - Waldnacht - Angistock - Brüsti',
+            time: 'Sonntag, 17. August',
+            location: 'Erstfeld',
+            description: 'Für SRK-Klient:innen. 5.00 Franken. Anmeldung per Whatsapp bei Regula Zberg 079 721 73 68. Bitte Name, Vorname und Wohnort angeben sowie ob Sie ein Halbtax haben. Der Treffpunkt und die genaue Zeit werden nach Anmeldung bekannt gegeben.'
+          },
+          {
+            id: 15,
+            category: 'beratung',
+            title: 'Offene Rechtsberatung',
+            time: 'Dienstag, 18. August, 14:00 - 16:00 Uhr',
+            location: 'Caritas Schweiz, Adligenswilstrasse 15, Luzern',
+            description: 'Für alle.'
+          },
+          {
+            id: 16,
+            category: 'kultur',
+            title: 'Gschichtästund mit Gabriela',
+            time: 'Mittwoch, 27. August, 14:15 - 14:45 Uhr',
+            location: 'Kantonsbibliothek Uri, Bahnhofstrasse 13, Altdorf',
+            description: 'Für Kinder von 1 - 4 Jahren in Begleitung einer erwachsenen Person, ältere und jüngere Geschwister sind auch willkommen. Gratis.'
+          },
+          {
+            id: 17,
+            category: 'kultur',
+            title: 'Offener Brennpunkt',
+            time: 'Samstag, 30. August, 19:30 – 23:00 Uhr',
+            location: 'Brennpunkt Uri, Umfahrungsstrasse 32, Schattdorf',
+            description: 'Für alle.'
           }
         ]
       }
