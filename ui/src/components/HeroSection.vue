@@ -6,7 +6,7 @@
 
             <div class="hero-overlay">
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
-                    <img src="@/assets/images/logo1.png" alt="Uri Flag"
+                    <img src="@/assets/images/logo1.jpeg" alt="Uri Flag"
                         class="h-16 sm:h-20 rounded shadow-md object-contain" />
                     <h1 class="text-h1 text-white leading-tight flex flex-row gap-3">
                         <span>Griäzi!</span>

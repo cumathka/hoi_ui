@@ -5,7 +5,7 @@
         <!-- Logo ve Brand -->
         <router-link to="/" class="flex items-center gap-2">
           <img 
-            src="@/assets/images/logo1.png" 
+            src="@/assets/images/logoh1.png" 
             alt="Logo" 
             class="w-[70px] h-[70px]"
           >
