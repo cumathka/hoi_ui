@@ -13,7 +13,7 @@
       <!-- Hero Overlay - Main CSS'ten hero-overlay-small kullan -->
       <div class="hero-overlay-small">
         <div class="flex items-center justify-center gap-4">
-          <img src="@/assets/images/logo1.png" alt="Uri Flag" class="h-20 w-auto m-0 shadow-md pointer-events-auto object-contain" />
+          <img src="@/assets/images/logoh.jpeg" alt="Uri Flag" class="h-20 w-auto m-0 shadow-md pointer-events-auto object-contain" />
           <h1 class="text-white m-0 drop-shadow-lg">Lebenslang Lernen</h1>
         </div>
       </div>
