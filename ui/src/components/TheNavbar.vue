@@ -1,5 +1,5 @@
 <template>
-  <nav class="py-2 shadow-sm" style="background-color: var(--blue-100);">
+  <nav class="py-2 shadow-sm bg-blue-100 relative z-30">
     <div class="container">
       <div class="flex items-center justify-between">
         <!-- Logo ve Brand -->
@@ -9,7 +9,7 @@
             alt="Logo" 
             class="w-[70px] h-[70px]"
           >
-          <span class="body-lead text-dark opacity-90">Griäzi!</span>
+          <span class="body-lead text-gray-900 opacity-90">Griäzi!</span>
         </router-link>
         
         <!-- Desktop Navigation -->
@@ -66,10 +66,14 @@
         
         <!-- Mobile Menu Button -->
         <button 
-          class="lg:hidden btn flex items-center" 
+          class="lg:hidden btn inline-flex items-center justify-center"
           @click="toggleMenu"
+          :aria-expanded="menuOpen ? 'true' : 'false'"
+          aria-controls="mobile-menu"
+          aria-label="Hauptmenü öffnen/schliessen"
+          type="button"
         >
-          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -77,7 +81,7 @@
       </div>
       
       <!-- Mobile Menu -->
-      <div v-if="menuOpen" class="lg:hidden mt-4 pb-4">
+      <div v-if="menuOpen" id="mobile-menu" class="lg:hidden mt-4 pb-4">
         <ul class="flex flex-col gap-2">
           <li>
             <router-link to="/info" class="mobile-link" @click="menuOpen = false">Informationen</router-link>
@@ -160,7 +164,7 @@ export default {
   },
   methods: {
     toggleMenu() {
-      this.menuOpen = !this.menuOpen
+      this.menuOpen = !this.menuOpen;
     },
     onInput() {
       this.showResults = !!this.search.trim();
@@ -189,18 +193,21 @@ export default {
 .nav-link {
   color: var(--cyan-700);
   font-weight: 500;
-  transition: color 0.2s;
+  transition: color var(--transition-normal);
   text-decoration: none;
   padding: 0.75rem 1.25rem;
+  outline: none;
 }
-
-.nav-link:hover {
+.nav-link:hover { color: var(--blue-600); }
+/* ÖZGÜLLÜKLE aktif link — !important kaldırıldı */
+.nav-link.router-link-active {
   color: var(--blue-600);
+  font-weight: 600;
 }
-
-.router-link-active {
-  font-weight: bold;
-  color: var(--blue-600) !important;
+/* Klavye odak görünürlüğü */
+.nav-link:focus-visible {
+  box-shadow: 0 0 0 3px rgba(8,121,144,.2);
+  border-radius: .375rem;
 }
 
 .search-input {
@@ -210,13 +217,10 @@ export default {
   color: var(--gray-600);
   outline: none;
   background: #fff;
-  transition: border 0.2s;
+  transition: border var(--transition-normal);
   min-width: 200px;
 }
-
-.search-input:focus {
-  border-color: var(--blue-600);
-}
+.search-input:focus { border-color: var(--blue-600); }
 
 .mobile-link {
   display: block;
@@ -224,9 +228,12 @@ export default {
   color: var(--cyan-700);
   font-weight: 500;
   text-decoration: none;
+  outline: none;
+  transition: color var(--transition-normal);
 }
-
-.mobile-link:hover {
-  color: var(--blue-600);
+.mobile-link:hover { color: var(--blue-600); }
+.mobile-link:focus-visible {
+  box-shadow: 0 0 0 3px rgba(8,121,144,.2);
+  border-radius: .375rem;
 }
 </style>
