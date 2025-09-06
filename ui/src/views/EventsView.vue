@@ -47,16 +47,81 @@
             <div ref="calendarEl" class="fc-container"></div>
           </div>
 
-          <!-- Categories -->
-          <div class="flex flex-wrap gap-2 mb-6">
-            <button v-for="category in categories" :key="category.id" @click="selectCategory(category.id)" :class="[
-              'btn',
-              'px-4 py-2',
-              selectedCategory === category.id ? 'selected-btn' : ''
-            ]" style="border-radius:9999px;">
-              {{ category.name }}
-            </button>
+          <!-- Selected Event Details -->
+          <div v-if="selectedEvent" class="event-detail-panel mb-8">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-semibold text-cyan-700">{{ selectedEvent.title }}</h3>
+              <span :class="['badge', 'badge-' + selectedEvent.category]">
+                {{categories.find(c => c.id === selectedEvent.category)?.name}}
+              </span>
+            </div>
+
+            <div class="grid gap-4 md:grid-cols-2">
+              <!-- Event Info -->
+              <div class="space-y-3">
+                <p class="flex items-center gap-2 text-gray-600">
+                  <span class="text-lg">📅</span> {{ selectedEvent.time }}
+                </p>
+                <p v-if="selectedEvent.location" class="flex items-center gap-2 text-gray-700">
+                  <span class="text-lg">📍</span> {{ selectedEvent.location }}
+                </p>
+                <p class="mt-4 text-gray-800">{{ selectedEvent.description }}</p>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex flex-col gap-3 justify-start">
+                <a :href="getEventMapLink(selectedEvent.location)" target="_blank"
+                  class="btn btn-outline flex items-center gap-2">
+                  <span>🗺️</span> Auf der Karte anzeigen
+                </a>
+                <button @click="registerForEvent(selectedEvent)" class="btn btn-primary flex items-center gap-2">
+                  <span>✍️</span> Jetzt anmelden
+                </button>
+                <button @click="addToCalendar(selectedEvent)" class="btn btn-outline flex items-center gap-2">
+                  <span>📅</span> Zum Kalender hinzufügen
+                </button>
+              </div>
+            </div>
           </div>
+
+          <!-- Category Filters -->
+          <div class="filter-section mb-6">
+            <div class="flex flex-wrap gap-2">
+              <button v-for="category in categories" :key="category.id" @click="filterByCategory(category.id)" :class="[
+                'filter-btn',
+                selectedCategory === category.id ? 'filter-btn-active' : ''
+              ]">
+                {{ category.name }}
+              </button>
+            </div>
+          </div>
+
+          <!-- Synchronized detail panel under the calendar -->
+          <section id="events-list" class="event-detail-panel">
+            <header class="panel-header">
+              <h3 class="panel-title">
+                <span v-if="selectedDate">Events am {{ new Date(selectedDate).toLocaleDateString('de-CH') }}</span>
+                <span v-else>Events nach Datum</span>
+              </h3>
+              <button v-if="selectedDate" class="btn py-1 px-3" @click="clearDateFilter">Filter aufheben</button>
+            </header>
+
+            <div v-if="selectedDate && selectedDateEvents().length" class="panel-list">
+              <article v-for="ev in selectedDateEvents()" :key="'list-' + ev.id" class="panel-item"
+                @click="focusCalendarEvent(ev.id)" role="button" tabindex="0">
+                <div class="item-head">
+                  <span class="badge" :class="'badge-' + (ev.category || 'kultur')">{{ ev.category }}</span>
+                  <h4 class="item-title">{{ ev.title }}</h4>
+                </div>
+                <p class="item-meta">{{ ev.time }}<span v-if="ev.location"> · {{ ev.location }}</span></p>
+                <p class="item-desc">{{ ev.description }}</p>
+              </article>
+            </div>
+
+            <div v-else class="panel-empty">
+              <p>Wählen Sie ein Datum im Kalender oder eine Kategorie, um die Events hier zu sehen.</p>
+            </div>
+          </section>
 
           <!-- Event List -->
           <div class="mt-4 rounded-lg shadow">
@@ -106,6 +171,7 @@ export default {
     const expandedDate = ref(null)
     const selectedCategory = ref('all')
     const selectedDate = ref(null)
+    const selectedEvent = ref(null)
 
     // Static categories
     const categories = ref([
@@ -145,10 +211,18 @@ export default {
         { id: 100, category: 'kultur', title: 'Urner Flüchtlingstag 2025', time: 'Samstag, 21. Juni, 12:00 – 22:00 Uhr', location: 'Unterlehn, 6460 Altdorf UR', description: 'Streetfood, Live-Musik, Podiumsdiskussion. (Quelle: uri.ch)' }
       ],
       'September 2025': [
-        { id: 200, category: 'kultur', title: 'Kreativ-Treff (Haus für Kunst Uri)', time: 'Freitag, 26. September, 14:00 – 16:45 Uhr', location: 'Haus für Kunst Uri', description: 'Offenes Kreativangebot mit SRK Uri. Kostenlos. (Quelle: uri.ch)' }
+        { id: 3001, category: 'kultur', title: 'Kinderfest Papilio – Musik | Spiel | Spass', time: 'Samstag, 6. September, 10:00 – 16:00 Uhr', location: 'Suworowplatz, 6460 Altdorf', description: 'Familienfest mit Musik, Spielen und Spass für Kinder. (Quelle: Gemeinde Altdorf) ' },
+        { id: 3002, category: 'kultur', title: 'Türmli – ein bisschen Bichsel (Märchentheater)', time: 'Samstag, 13. September, 10:00 – 11:00 Uhr', location: 'Kantonsbibliothek Uri, Bahnhofstrasse 13, Altdorf', description: 'Märchentheater für Kinder in der Kantonsbibliothek Uri. (Quelle: Gemeinde Altdorf) ' },
+        { id: 3003, category: 'umwelt', title: 'Klimaanlass – «Üs mängisch würks miär»', time: 'Mittwoch, 17. September, 19:00 – 21:00 Uhr', location: 'Altdorf', description: 'Klimaanlass der Gemeinde Altdorf. (Quelle: Gemeinde Altdorf) ' },
+        { id: 3004, category: 'kultur', title: 'Malä & Mampfä – Workshop', time: 'Mittwoch, 17. September, 12:30 – 15:30 Uhr', location: 'Mundart Café, Gotthardstrasse 109, 6490 Andermatt', description: 'Workshop im Mundart Café Andermatt. (Quelle: UriAgenda) ' },
+        { id: 3005, category: 'musik', title: 'TriffAltdorf – Offenes Singen', time: 'Freitag, 26. September, 19:00 – 21:00 Uhr', location: 'TriffAltdorf, Dätwylerstrasse 15, 6460 Altdorf', description: 'Gemeinsames Singen, offen für alle. (Quelle: UriAgenda) ' },
+        { id: 3006, category: 'kultur', title: 'Lettering Workshop', time: 'Freitag, 26. September, 18:30 – 21:00 Uhr', location: 'Mundart Café, Gotthardstrasse 109, 6490 Andermatt', description: 'Handlettering-Workshop im Mundart Café. (Quelle: UriAgenda) ' },
+        { id: 3007, category: 'kultur', title: 'Flüeler Chilbi', time: 'Samstag, 27. September, ganztägig', location: 'Dorfkern Flüelen', description: 'Traditionelle Chilbi mit Markt und Unterhaltung. (Quelle: Gemeinde Flüelen) ' },
+        { id: 3008, category: 'natur', title: 'Wald-Nachmittag Hospental', time: 'Freitag, 5. September, 13:00 – 17:00 Uhr', location: '6493 Hospental', description: 'Natur- und Waldnachmittag, offen für alle. (Quelle: UriAgenda) ' }
       ],
       'October 2025': [
-        { id: 201, category: 'kultur', title: 'Kreativ-Treff (Haus für Kunst Uri)', time: 'Freitag, 24. Oktober, 14:00 – 16:45 Uhr', location: 'Haus für Kunst Uri', description: 'Offenes Kreativangebot. (Quelle: uri.ch)' }
+        { id: 3101, category: 'natur', title: 'Wald-Nachmittag Hospental', time: 'Montag, 20. Oktober, 13:00 – 17:00 Uhr', location: '6493 Hospental', description: 'Natur- und Waldnachmittag, offen für alle. (Quelle: UriAgenda) ' },
+        { id: 3102, category: 'musik', title: 'TriffAltdorf – Offenes Singen', time: 'Freitag, 31. Oktober, 19:00 – 21:00 Uhr', location: 'TriffAltdorf, Dätwylerstrasse 15, 6460 Altdorf', description: 'Gemeinsames Singen, offen für alle. (Quelle: UriAgenda) ' }
       ],
       'December 2025': [
         { id: 202, category: 'kultur', title: 'Kreativ-Treff (Haus für Kunst Uri)', time: 'Freitag, 5. Dezember, 14:00 – 16:45 Uhr', location: 'Haus für Kunst Uri', description: 'Offenes Kreativangebot. (Quelle: uri.ch)' }
@@ -239,12 +313,27 @@ export default {
               center: '',
               right: 'prev,next'
             },
+            eventClassNames: (arg) => {
+              const cat = arg.event.extendedProps?.ev?.category || 'kultur'
+              return ['cat-' + cat]
+            },
+            dayCellDidMount: (arg) => {
+              if (arg.date) {
+                arg.el.setAttribute('data-date', arg.date.toISOString().slice(0, 10))
+              }
+            },
             events: buildCalendarEvents(),
-            eventClick: handleEventClick,
+            eventClick: (info) => {
+              const eventData = info.event.extendedProps.ev
+              selectedEvent.value = eventData
+              selectedDate.value = info.event.startStr
+              highlightSelectedDate()
+            },
             dateClick: handleDateClick
           })
 
           calendar.render()
+          highlightSelectedDate()
           console.log('[FullCalendar] Calendar initialized')
         } catch (err) {
           console.error('[FullCalendar] Init error:', err)
@@ -264,17 +353,87 @@ export default {
     const toggleEventDetails = (date) => { expandedDate.value = (expandedDate.value === date ? null : date) }
     const selectCategory = (id) => { selectedCategory.value = id }
     const clearDateFilter = () => { selectedDate.value = null }
+
+    const scrollListIntoView = () => {
+      const el = document.getElementById('events-list')
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+
+    const highlightSelectedDate = () => {
+      const cells = document.querySelectorAll('.fc-daygrid-day[data-date]')
+      cells.forEach((c) => c.classList.remove('fc-day-selected'))
+      if (!selectedDate.value) return
+      const sel = document.querySelector(`.fc-daygrid-day[data-date="${selectedDate.value}"]`)
+      if (sel) sel.classList.add('fc-day-selected')
+    }
+
     const handleDateClick = (info) => {
       selectedDate.value = info.dateStr
       const d = new Date(info.dateStr)
       expandedDate.value = monthKeyFromDate(d)
+      highlightSelectedDate()
+      scrollListIntoView()
     }
     const handleEventClick = (info) => {
       const start = info.event.start
       if (start) {
         selectedDate.value = start.toISOString().slice(0, 10)
         expandedDate.value = monthKeyFromDate(start)
+        highlightSelectedDate()
+        scrollListIntoView()
       }
+    }
+
+    const focusCalendarEvent = (id) => {
+      if (!calendar) return
+      const ev = calendar.getEventById(String(id))
+      if (ev && ev.start) {
+        calendar.gotoDate(ev.start)
+        selectedDate.value = ev.start.toISOString().slice(0, 10)
+        highlightSelectedDate()
+      }
+    }
+
+    // Add new methods
+    const filterByCategory = (categoryId) => {
+      selectedCategory.value = categoryId
+      if (calendar) {
+        calendar.getEvents().forEach(event => {
+          const cat = event.extendedProps?.ev?.category
+          if (categoryId === 'all' || cat === categoryId) {
+            event.setProp('display', 'auto')
+          } else {
+            event.setProp('display', 'none')
+          }
+        })
+      }
+    }
+
+    const registerForEvent = (event) => {
+      // TODO: Implement registration logic
+      console.log('Register for event:', event)
+    }
+
+    // New helper methods
+    const getEventMapLink = (location) => {
+      if (!location) return '#'
+      const query = encodeURIComponent(location)
+      return `https://www.google.com/maps/search/?api=1&query=${query}`
+    }
+
+    const addToCalendar = (event) => {
+      const dateStr = parseDateFromKeyAndTime(event.monthKey || 'August 2025', event.time)
+      if (!dateStr) return
+
+      const title = encodeURIComponent(event.title)
+      const details = encodeURIComponent(event.description)
+      const location = encodeURIComponent(event.location || '')
+      const date = new Date(dateStr)
+
+      // Create Google Calendar link
+      const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${date.toISOString().replace(/[-:]/g, '').split('.')[0]}Z/${date.toISOString().replace(/[-:]/g, '').split('.')[0]}Z`
+
+      window.open(googleUrl, '_blank')
     }
 
     // Derived (computed-like) structures
@@ -308,6 +467,18 @@ export default {
       return filtered
     }
 
+    const selectedDateEvents = () => {
+      if (!selectedDate.value) return []
+      const result = []
+      Object.entries(eventsByMonth.value).forEach(([monthKey, list]) => {
+        list.forEach((ev) => {
+          const iso = parseDateFromKeyAndTime(monthKey, ev.time)
+          if (iso === selectedDate.value) result.push(ev)
+        })
+      })
+      return result
+    }
+
     return {
       // Refs
       calendarEl,
@@ -315,6 +486,7 @@ export default {
       expandedDate,
       selectedCategory,
       selectedDate,
+      selectedEvent,
       categories,
       // Data groups
       eventsByMonth,
@@ -325,8 +497,14 @@ export default {
       clearDateFilter,
       handleDateClick,
       handleEventClick,
+      filterByCategory,
+      registerForEvent,
+      getEventMapLink,
+      addToCalendar,
       // Derived
-      filteredEventsByCategoryAndDate
+      filteredEventsByCategoryAndDate,
+      selectedDateEvents,
+      focusCalendarEvent
     }
   }
 }
@@ -385,5 +563,261 @@ export default {
 .fc-container {
   min-height: 500px !important;
   margin-bottom: 2rem;
+}
+
+/* Detail panel under calendar */
+.event-detail-panel {
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, .06);
+  padding-bottom: .5rem;
+  margin-bottom: 1rem;
+}
+
+.panel-title {
+  font-family: var(--font-primary);
+  font-size: 1.125rem;
+  color: var(--gray-900);
+}
+
+.panel-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.panel-item {
+  background: var(--blue-100);
+  border: 1px solid rgba(10, 88, 202, .12);
+  border-radius: .75rem;
+  padding: .75rem 1rem;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.panel-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(10, 88, 202, .12);
+}
+
+.item-head {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .25rem;
+}
+
+.item-title {
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  font-size: 1rem;
+  color: #053a63;
+}
+
+.item-meta {
+  font-size: .875rem;
+  color: var(--gray-700);
+  margin: .125rem 0;
+}
+
+.item-desc {
+  font-size: .9rem;
+  color: var(--gray-900);
+  opacity: .9;
+}
+
+/* Category badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .25rem;
+  padding: .125rem .5rem;
+  border-radius: 9999px;
+  font-size: .75rem;
+  font-weight: 600;
+  background: rgba(8, 121, 144, .1);
+  color: var(--cyan-700);
+  border: 1px solid rgba(8, 121, 144, .25);
+}
+
+.badge-beratung {
+  background: rgba(102, 16, 242, .08);
+  color: #6610f2;
+  border-color: rgba(102, 16, 242, .25);
+}
+
+.badge-kultur {
+  background: rgba(253, 126, 20, .10);
+  color: #c65a0a;
+  border-color: rgba(253, 126, 20, .25);
+}
+
+.badge-musik {
+  background: rgba(13, 110, 253, .10);
+  color: #0b5ed7;
+  border-color: rgba(13, 110, 253, .25);
+}
+
+.badge-sport {
+  background: rgba(25, 135, 84, .10);
+  color: #1e7e34;
+  border-color: rgba(25, 135, 84, .25);
+}
+
+.badge-ausflug {
+  background: rgba(32, 201, 151, .10);
+  color: #0f766e;
+  border-color: rgba(32, 201, 151, .25);
+}
+
+.badge-kurs {
+  background: rgba(255, 193, 7, .15);
+  color: #a07800;
+  border-color: rgba(255, 193, 7, .3);
+}
+
+.badge-schnupper {
+  background: rgba(111, 66, 193, .10);
+  color: #6f42c1;
+  border-color: rgba(111, 66, 193, .25);
+}
+
+.badge-sprache {
+  background: rgba(8, 121, 144, .10);
+  color: #086f90;
+  border-color: rgba(8, 121, 144, .25);
+}
+
+.badge-umwelt {
+  background: rgba(40, 167, 69, .10);
+  color: #2d7a43;
+  border-color: rgba(40, 167, 69, .25);
+}
+
+.badge-natur {
+  background: rgba(16, 185, 129, .10);
+  color: #0f766e;
+  border-color: rgba(16, 185, 129, .25);
+}
+
+/* Calendar category tint */
+.fc .fc-event.cat-kultur {
+  background: rgba(253, 126, 20, .15);
+  border-color: rgba(253, 126, 20, .35);
+  color: #6b3a09;
+}
+
+.fc .fc-event.cat-musik {
+  background: rgba(13, 110, 253, .15);
+  border-color: rgba(13, 110, 253, .35);
+  color: #083b9a;
+}
+
+.fc .fc-event.cat-sport {
+  background: rgba(25, 135, 84, .15);
+  border-color: rgba(25, 135, 84, .35);
+  color: #145c32;
+}
+
+.fc .fc-event.cat-ausflug {
+  background: rgba(32, 201, 151, .15);
+  border-color: rgba(32, 201, 151, .35);
+  color: #0f5f56;
+}
+
+.fc .fc-event.cat-kurs {
+  background: rgba(255, 193, 7, .18);
+  border-color: rgba(255, 193, 7, .4);
+  color: #7a5b00;
+}
+
+.fc .fc-event.cat-schnupper {
+  background: rgba(111, 66, 193, .15);
+  border-color: rgba(111, 66, 193, .35);
+  color: #3f2a7a;
+}
+
+.fc .fc-event.cat-sprache {
+  background: rgba(8, 121, 144, .15);
+  border-color: rgba(8, 121, 144, .35);
+  color: #08485a;
+}
+
+.fc .fc-event.cat-beratung {
+  background: rgba(102, 16, 242, .15);
+  border-color: rgba(102, 16, 242, .35);
+  color: #3d0ca8;
+}
+
+.fc .fc-event.cat-umwelt {
+  background: rgba(40, 167, 69, .15);
+  border-color: rgba(40, 167, 69, .35);
+  color: #1f7a3a;
+}
+
+.fc .fc-event.cat-natur {
+  background: rgba(16, 185, 129, .15);
+  border-color: rgba(16, 185, 129, .35);
+  color: #0b5d4d;
+}
+
+/* Selected day highlight */
+.fc-daygrid-day.fc-day-selected {
+  outline: 3px solid rgba(8, 121, 144, .35);
+  outline-offset: -3px;
+}
+
+.event-detail-panel {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  background: white;
+  border: 2px solid var(--cyan-700);
+  color: var(--cyan-700);
+  transition: all 0.2s ease;
+}
+
+.filter-btn-active {
+  background: var(--cyan-700);
+  color: white;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--cyan-700);
+  color: var(--cyan-700);
+}
+
+.btn-outline:hover {
+  background: var(--cyan-700);
+  color: white;
+}
+
+.btn-primary {
+  background: var(--cyan-700);
+  color: white;
+  border: 2px solid var(--cyan-700);
+}
+
+.btn-primary:hover {
+  background: var(--cyan-600);
+  border-color: var(--cyan-600);
+  transform: translateY(-1px);
 }
 </style>
