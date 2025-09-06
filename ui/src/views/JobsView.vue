@@ -12,9 +12,9 @@
       />
       <!-- Hero Overlay -->
       <div class="hero-overlay-small">
-        <div class="flex items-center justify-center gap-4">
-          <img src="@/assets/images/logoh.jpeg" alt="Uri Flag" class="h-20 w-auto m-0 shadow-md pointer-events-auto object-contain" />
-          <h1 class="text-white m-0 drop-shadow-lg">Arbeitsmöglichkeiten</h1>
+        <div class="flex items-center justify-center gap-4 flex-row flex-nowrap px-4 text-center">
+          <img src="@/assets/images/logoh.jpeg" alt="Uri Logo" class="h-20 w-auto m-0 shadow-md pointer-events-auto object-contain rounded-md" />
+          <h1 class="text-h3 text-white m-0 drop-shadow-lg">Arbeitsmöglichkeiten</h1>
         </div>
       </div>
 

@@ -1,13 +1,13 @@
 <template>
   <div
-    class="flex flex-col items-center justify-center min-h-screen px-4"
-    style="background-color: rgb(252, 246, 231);"
+    class="flex flex-col items-center justify-center min-h-screen px-4 bg-yellow-100"
   >
     <img
       src="@/assets/images/404.jpeg"
-      alt="Logo"
-      class="h-[36rem] w-auto mb-8"
-      style="box-shadow: none; border-radius: 0;"
+      alt="404 Illustration"
+      loading="lazy"
+      decoding="async"
+      class="max-h-[60vh] w-auto mb-8 rounded-md shadow-sm"
     />
     <h2 class="text-2xl font-semibold text-gray-800 mb-2">Seite nicht gefunden</h2>
     <p class="text-gray-600 mb-6 text-center max-w-md">

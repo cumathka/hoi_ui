@@ -98,16 +98,48 @@ input, button, select, textarea { font-family: inherit; }
    ========================================================================== */
 
 .hero-overlay-small {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 40%; min-width: 200px; padding: 1rem;
-  border-radius: var(--border-radius-xl); text-align: center; color: var(--white);
-  background: var(--hero-overlay-bg); backdrop-filter: blur(1px); pointer-events: none;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Use intrinsic width and cap it responsively to prevent bleed/overflow */
+  width: auto;
+  max-width: min(90vw, 820px);
+  min-width: 200px;
+  padding: 1rem clamp(12px, 3vw, 24px);
+  box-sizing: border-box;
+
+  border-radius: var(--border-radius-xl);
+  text-align: center;
+  color: var(--white);
+  background: var(--hero-overlay-bg);
+  backdrop-filter: blur(1px);
+  pointer-events: none;
+
+  display: flex;
+  flex-direction: row;           /* keep logo + title side-by-side by default */
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 5;                    /* stay above image but below navbar */
 }
 .hero-overlay-small h1 {
+  /* Keep the original primary font */
   font-family: var(--font-primary);
-  font-size: 3.5rem; font-weight: 300; line-height: 1.1; margin: 0;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); letter-spacing: -0.025em; color: var(--white);
+  /* Responsive size that respects your text-h3 token on large screens */
+  font-size: clamp(24px, 4vw, var(--text-h3-size));
+  font-weight: 400;
+  line-height: 1.1;
+  margin: 0;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  letter-spacing: -0.025em;
+  color: var(--white);
+}
+
+/* Keep overlay logo from growing too large on laptops */
+.hero-overlay-small img {
+  height: clamp(48px, 6vw, 80px);
+  width: auto;
 }
 
 .section-header { margin-bottom: 1rem; }
@@ -329,9 +361,23 @@ input, button, select, textarea { font-family: inherit; }
    GLOBAL RESPONSIVE TYPE & SPACING
    ========================================================================== */
 
+/* Keep overlay centered and within viewport on laptop screens */
+@media (min-width: 1024px) and (max-width: 1440px){
+  .hero-overlay-small{
+    max-width: min(72vw, 700px);
+  }
+}
+
+/* Stack logo and title on narrow screens to avoid overflow */
+@media (max-width: 640px){
+  .hero-overlay-small{
+    flex-direction: column;
+    gap: .5rem;
+  }
+}
+
 @media (max-width:1200px){
   :root{ --text-h0-size:72px; --text-h1-size:48px; --text-h3-size:32px; --text-4xl-size:28px; }
-  .hero-overlay-small h1{ font-size:3rem; }
 }
 
 @media (max-width:768px){
@@ -344,13 +390,17 @@ input, button, select, textarea { font-family: inherit; }
   .hero-overlay{ padding:2rem; width:95vw; }
   .card{ padding:1rem; }
   .footer-container{ padding:2rem 0; }
-  .hero-overlay-small{ width:90%; padding:1.5rem; }
-  .hero-overlay-small h1{ font-size:2.5rem; }
+  .hero-overlay-small{ width:90%; padding:1.5rem; gap: .75rem; padding: 1rem; }
+  .hero-overlay-small img{ height: clamp(40px, 9vw, 64px); }
   .content-section, .image-section, .link-card{ padding:1rem; }
 }
 
 @media (max-width:480px){
   :root{ --text-h1-size:28px; --text-h3-size:20px; --text-4xl-size:20px; }
   .hero-overlay{ padding:1.5rem; }
-  .hero-overlay-small h1{ font-size:2rem; }
 }
+
+/* Ensure navbar stays above hero overlays */
+.navbar-z-top{ z-index: 50; position: relative; }
+
+/* You can add class="navbar-z-top" to your <nav> root element if needed */

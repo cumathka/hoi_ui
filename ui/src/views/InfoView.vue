@@ -1,35 +1,50 @@
 <template>
   <div class="info-view relative w-full min-h-screen">
-    <!-- Hero Görsel ve Overlay -->
+    <!-- Hero image + overlay -->
     <div class="relative w-full overflow-hidden">
-      <img src="@/assets/images/info.png" @click="toggleFullscreen" :class="isFullscreen
-        ? 'fixed inset-0 w-screen h-screen object-contain z-[1000] bg-black/90 cursor-zoom-out p-5 box-border transition-all duration-300'
-        : 'w-full h-auto cursor-pointer transition-all duration-300'" alt="Information" />
-      <!-- Hero Overlay -->
+      <!-- Click to toggle fullscreen -->
+      <img
+        src="@/assets/images/info.png"
+        alt="Information header"
+        loading="lazy"
+        decoding="async"
+        @click="toggleFullscreen"
+        :class="isFullscreen
+          ? 'fixed inset-0 w-screen h-screen object-contain z-[1000] bg-black/90 cursor-zoom-out p-5 box-border transition-all duration-300'
+          : 'w-full h-auto cursor-zoom-in transition-all duration-300'"
+      />
+
+      <!-- Hero overlay: title + logo -->
       <div class="hero-overlay-small">
         <div class="flex items-center justify-center gap-4">
-          <img src="@/assets/images/logoh.jpeg" alt="Uri Flag"
-            class="h-20 w-auto m-0 shadow-md pointer-events-auto object-contain" />
-          <h1 class="text-white m-0 drop-shadow-lg">Fakten und Links</h1>
+          <!-- keep your updated logo; swap to logo1.png if you want the old one -->
+          <img
+            src="@/assets/images/logoh.jpeg"
+            alt="Uri Logo"
+            class="h-20 w-auto m-0 shadow-md pointer-events-auto object-contain rounded-md"
+            loading="lazy"
+            decoding="async"
+          />
+          <h1 class="text-h3 text-white m-0 drop-shadow-lg">Fakten und Links</h1>
         </div>
       </div>
 
       <!-- Breadcrumb -->
       <div class="container">
-        <nav class="breadcrumb">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
           <router-link to="/" class="hover:underline">Home</router-link>
-          <span>&gt;</span>
+          <span aria-hidden="true">›</span>
           <router-link to="/info" class="hover:underline">Information</router-link>
         </nav>
       </div>
     </div>
 
-    <!-- Sayfa İçeriği -->
+    <!-- Page content -->
     <div class="container">
       <div class="py-10">
-        <!-- Başlık ve Açıklama -->
+        <!-- Intro -->
         <header class="mb-8">
-          <h1 class="text-h3 text-orange-600 mb-4 ">Wissenswertes über Neuankömmlinge in Uri</h1>
+          <h1 class="text-h3 text-orange-600 mb-4">Wissenswertes über Neuankömmlinge in Uri</h1>
         </header>
 
         <section class="content-section">
@@ -61,13 +76,23 @@
           </p>
         </section>
 
-        <!-- Harita -->
+        <!-- Map image + source -->
         <div class="image-section">
-          <img src="@/assets/images/map1.png" alt="Uri Map" class="max-w-full h-auto rounded-lg shadow" />
+          <img
+            src="@/assets/images/map1.png"
+            alt="Kanton Uri map"
+            class="max-w-full h-auto rounded-lg shadow"
+            loading="lazy"
+            decoding="async"
+          />
           <div class="image-source">
             Quelle:
-            <a href="https://www.sem.admin.ch/sem/de/home/integration-einbuergerung/integrationsfoerderung/monitoring/erwerb-va-fl.html"
-              target="_blank" rel="noopener noreferrer" class="source-link">
+            <a
+              href="https://www.sem.admin.ch/sem/de/home/integration-einbuergerung/integrationsfoerderung/monitoring/erwerb-va-fl.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="source-link"
+            >
               Staatssekretariat für Migration SEM
             </a>
           </div>
@@ -79,8 +104,13 @@
         </header>
 
         <div class="image-section">
-          <img src="@/assets/images/inper.png" alt="Erwerbstätigkeit Statistik"
-            class="max-w-full h-auto rounded-lg shadow" />
+          <img
+            src="@/assets/images/inper.png"
+            alt="Erwerbstätigkeit Statistik"
+            class="max-w-full h-auto rounded-lg shadow"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
 
         <section class="content-section">
@@ -91,19 +121,30 @@
           </p>
         </section>
 
+        <!-- Additional stats -->
         <div class="image-section">
-          <img src="@/assets/images/img6.png" alt="Additional Statistics" class="max-w-full h-auto rounded-lg shadow" />
+          <img
+            src="@/assets/images/img6.png"
+            alt="Weitere Statistiken"
+            class="max-w-full h-auto rounded-lg shadow"
+            loading="lazy"
+            decoding="async"
+          />
           <div class="image-source">
             Quelle:
-            <a href="https://www.sem.admin.ch/sem/de/home/integration-einbuergerung/integrationsfoerderung/monitoring/erwerb-va-fl.html"
-              target="_blank" rel="noopener noreferrer" class="source-link">
+            <a
+              href="https://www.sem.admin.ch/sem/de/home/integration-einbuergerung/integrationsfoerderung/monitoring/erwerb-va-fl.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="source-link"
+            >
               Staatssekretariat für Migration SEM
             </a>
             <span class="ml-2">(Stand: 11.03.2025)</span>
           </div>
         </div>
 
-        <!-- Tipps für den Alltag in Uri -->
+        <!-- Tipps -->
         <header class="section-header">
           <h2 class="text-h3 text-orange-600 mb-2">Tipps für den Alltag in Uri</h2>
         </header>
@@ -116,6 +157,7 @@
           </p>
         </section>
 
+        <!-- Teilnahme und Sprache -->
         <header class="section-header">
           <h3 class="text-h3 text-orange-600 mb-2">Teilnahme und Sprache</h3>
         </header>
@@ -123,31 +165,33 @@
         <section class="content-section">
           <p class="body-regular mb-4">
             Wochenmärkte und Konzerte, aber auch Spaziergänge und Wanderungen sind gute Gelegenheiten,
-            die Kulturellen Regeln und Menschen in Uri kennenzulernen. Es braucht keine Sprachkenntnisse,
-            um den öffentlichen Raum zu nutzen, um erste Kontakte mir Urnerinnen und Urnern zu knüpfen.
+            die kulturellen Regeln und Menschen in Uri kennenzulernen. Es braucht keine Sprachkenntnisse,
+            um den öffentlichen Raum zu nutzen, um erste Kontakte mit Urnerinnen und Urnern zu knüpfen.
             Das Lernen der Sprache ist allerdings ein wichtiger Aspekt, um Sprachbarrieren und Missverständnisse
             zu verhindern und um Teil der Urner Gemeinschaft zu werden.
           </p>
         </section>
 
+        <!-- Bräuche -->
         <header class="section-header">
           <h2 class="text-h3 text-orange-600 mb-2">Urner Feste und Bräuche</h2>
         </header>
 
         <section class="content-section">
           <p class="body-regular mb-4">
-            Fasnacht, Samichlaus, Alpaufzug, 1.August - die Menschen im Kanton Uri feiern viele
+            Fasnacht, Samichlaus, Alpaufzug, 1. August – die Menschen im Kanton Uri feiern viele
             traditionelle Feste. Zu diesen Festen finden auch jedes Jahr grosse Märkte und Events
             in Altdorf statt. Feiern Sie mit!
             <br><br>
-            Ein Brauchtum, der das ganze Jahr stattfindet ist das gegenseitige Begrüssen in der
-            Nachbarschaft, beim Spazieren oder auf Wanderungen. Gegrüsst wird mit "Griäzi" und "Guete Tag".
+            Ein Brauchtum, der das ganze Jahr stattfindet, ist das gegenseitige Begrüssen in der
+            Nachbarschaft, beim Spazieren oder auf Wanderungen. Gegrüsst wird mit «Griäzi» und «Guete Tag».
             <br><br>
             Weitere Informationen über Urner Bräuche und gelebte Traditionen finden Sie auf der
             <router-link to="/learning" class="nav-link">Lernen-Seite</router-link>.
           </p>
         </section>
 
+        <!-- Links -->
         <header class="section-header">
           <h1 class="text-h3 text-orange-600 mb-2">Nützliche Links</h1>
         </header>
@@ -156,19 +200,20 @@
           <div class="links-grid">
             <div class="link-card">
               <h4 class="text-h5 text-orange-600 mb-2 font-semibold">Fachstelle Integration und Vernetzung Uri</h4>
-              <p class="body-regular mb-2">Die Fachstelle Integration und Vernetzung Uri ist Ihre Anlaufstelle, wenn sie
-                Beratungen in Anspruch nehmen möchten, oder wenn Sie sich über bestehenden Angebote im Kanton Uri
-                informieren möchten.</p>
-              <a href="https://www.ur.ch/unterinstanzen/1436" target="_blank"
-                class="external-link">www.ur.ch/unterinstanzen/1436</a>
+              <p class="body-regular mb-2">
+                Die Fachstelle Integration und Vernetzung Uri ist Ihre Anlaufstelle, wenn Sie
+                Beratungen in Anspruch nehmen möchten oder wenn Sie sich über bestehende Angebote im Kanton Uri
+                informieren möchten.
+              </p>
+              <a href="https://www.ur.ch/unterinstanzen/1436" target="_blank" class="external-link">www.ur.ch/unterinstanzen/1436</a>
             </div>
 
             <div class="link-card">
               <h4 class="text-h5 text-orange-600 mb-2 font-semibold">Integration Uri</h4>
-              <p class="body-regular mb-2">Die Integrations-Agenda beschreibt den best-case Integrationsprozess, den
-                "Soll-Integrationsprozess" für die 16-25- Jährige. Die einzelnen Phasen der Integration werden im
-                Dokument "Integrationsagenda Schweiz: Bericht der Koordinationsgruppe vom 1. März 2018" ausführlich
-                beschrieben.</p>
+              <p class="body-regular mb-2">
+                Die Integrations-Agenda beschreibt den Best-Case-Integrationsprozess («Soll-Integrationsprozess») für 16–25-Jährige.
+                Die einzelnen Phasen der Integration werden im Dokument «Integrationsagenda Schweiz: Bericht der Koordinationsgruppe vom 1. März 2018» ausführlich beschrieben.
+              </p>
               <a href="https://www.integration-uri.ch" target="_blank" class="external-link">www.integration-uri.ch</a>
             </div>
 
@@ -176,17 +221,25 @@
               <h4 class="text-h5 text-orange-600 mb-2 font-semibold">Staatssekretariat für Migration SEM</h4>
               <p class="body-regular mb-2">Weiterführende Informationen zur Integrationsagenda:</p>
               <div class="flex flex-col gap-2">
-                <a href="https://www.sem.admin.ch/sem/fr/home/integration-einbuergerung/integrationsfoerderung/kantonale-programme/integrationsagenda"
-                  target="_blank" class="external-link">Integrationsagenda</a>
-                <a href="https://www.sem.admin.ch/dam/sem/de/data/integration/agenda/ber-koordinationsgruppe-integrationsagenda-d.pdf.download.pdf/ber-koordinationsgruppe-integrationsagenda-d.pdf"
-                  target="_blank" class="external-link">Bericht der Koordinationsgruppe (PDF)</a>
+                <a
+                  href="https://www.sem.admin.ch/sem/fr/home/integration-einbuergerung/integrationsfoerderung/kantonale-programme/integrationsagenda"
+                  target="_blank"
+                  class="external-link"
+                >Integrationsagenda</a>
+                <a
+                  href="https://www.sem.admin.ch/dam/sem/de/data/integration/agenda/ber-koordinationsgruppe-integrationsagenda-d.pdf.download.pdf/ber-koordinationsgruppe-integrationsagenda-d.pdf"
+                  target="_blank"
+                  class="external-link"
+                >Bericht der Koordinationsgruppe (PDF)</a>
               </div>
             </div>
 
             <div class="link-card">
               <h4 class="text-h5 text-orange-600 mb-2 font-semibold">Familien Uri</h4>
-              <p class="body-regular mb-2">Familien Uri ist eine Plattform für Familienevents, Betreuungsangebote und
-                Bildungsangebote für Familien im Kanton Uri.</p>
+              <p class="body-regular mb-2">
+                Familien Uri ist eine Plattform für Familienevents, Betreuungsangebote und
+                Bildungsangebote für Familien im Kanton Uri.
+              </p>
               <a href="https://www.familien-uri.ch" target="_blank" class="external-link">www.familien-uri.ch</a>
             </div>
           </div>
@@ -200,14 +253,13 @@
 export default {
   name: 'InfoView',
   data() {
-    return {
-      isFullscreen: false
-    }
+    return { isFullscreen: false }
   },
   methods: {
+    // Toggle hero image fullscreen; lock body scroll when active
     toggleFullscreen() {
-      this.isFullscreen = !this.isFullscreen;
-      document.body.style.overflow = this.isFullscreen ? 'hidden' : '';
+      this.isFullscreen = !this.isFullscreen
+      document.body.style.overflow = this.isFullscreen ? 'hidden' : ''
     }
   }
 }

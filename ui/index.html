@@ -1,14 +1,43 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="de">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hoi Uri</title>
+
+    <!-- FullCalendar CSS (must be index.css) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.12/index.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.12/index.css"
+    />
+
+    <!-- Load FullCalendar GLOBAL bundles first; `defer` keeps order and doesn't block -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.12/index.global.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.12/index.global.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@6.1.12/index.global.min.js"
+      defer
+    ></script>
+
+    <!-- Add German locale -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fullcalendar/core/locales/de.js"
+      defer
+    ></script>
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <!-- Vite entry (loads after globals due to defer above) -->
+    <script type="module" src="./src/main.js"></script>
   </body>
 </html>
