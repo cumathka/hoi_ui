@@ -820,4 +820,11 @@ export default {
   border-color: var(--cyan-600);
   transform: translateY(-1px);
 }
+
+/* Make event titles black */
+.fc-event-title {
+  color: black !important;
+  /* Override any other color settings */
+  font-weight: 500;
+}
 </style>
