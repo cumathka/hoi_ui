@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hoi Uri</title>
+
+    <!-- FullCalendar CSS (must be index.css) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.12/index.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.12/index.css"
+    />
+
+    <!-- Load FullCalendar GLOBAL bundles first; `defer` keeps order and doesn't block -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.12/index.global.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.12/index.global.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@6.1.12/index.global.min.js"
+      defer
+    ></script>
+
+    <!-- Add German locale -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fullcalendar/core/locales/de.js"
+      defer
+    ></script>
+    <script type="module" crossorigin src="/hoi_ui/assets/index-DgD5n0t7.js"></script>
+    <link rel="stylesheet" crossorigin href="/hoi_ui/assets/index-BMQPniqv.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- Vite entry (loads after globals due to defer above) -->
+  </body>
+</html>
