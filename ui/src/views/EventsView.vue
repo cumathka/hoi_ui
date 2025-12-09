@@ -199,7 +199,7 @@ export default {
         { id: 8, category: 'sport', title: 'Unihockey in Schattdorf', time: 'jeden Samstag, 16:45 – 19:00 Uhr', location: 'Gräwimatt-Turnhalle, Schulhausstrasse 30, Schattdorf', description: 'Für alle. Gratis.' },
         { id: 9, category: 'kultur', title: 'Bundesfeier am 1. August', time: 'Freitag, 1. August, ab 10:00 Uhr', location: 'Zentrum von Altdorf', description: 'Für alle. Gratis.' },
         { id: 10, category: 'kultur', title: 'Altdorfer Fiirabig', time: 'Freitag, 8. August, ab 16:00 Uhr', location: 'Unterlehn, Altdorf', description: 'Für alle. Gratis.' },
-        { id: 11, category: 'ausflug', title: 'Ausflug und Besichtigung Alp Hinterfeld mit Picknick', time: 'Mittwoch, 13. August, ca. 09:00 - 15:00 Uhr', location: 'Alp Hinterfeld', description: 'Für SRK Klient:innen. Gratis. Anmeldung bis am 6. August…' },
+        { id: 11, category: 'ausflug', title: 'Ausflug und Besichtigung Alp Hinterfeld mit Picknick', time: 'Mittwoch, 13. August, ca. 09:00 - 15:00 Uhr', location: 'Alp Hinterfeld', description: 'Für SRK-Klient:innen. Gratis. Anmeldung bis am 6. August…' },
         { id: 12, category: 'kultur', title: 'Alpentöne Altdorf 2025', time: '14. - 16. August, ganztätgig', location: 'Altdorf', description: 'Diverse Gratiskonzerte und Programm.' },
         { id: 13, category: 'ausflug', title: 'Leichte Wanderung: Erstfeld Wilerli - Oberwiler - Zieriberg - Erstfeld', time: 'Sonntag, 17. August', location: 'Erstfeld', description: 'SRK-Klient:innen. 5 CHF. Anmeldung per Whatsapp…' },
         { id: 14, category: 'ausflug', title: 'Schwere Wanderung: Erstfeld Wilerli - Waldnacht - Angistock - Brüsti', time: 'Sonntag, 17. August', location: 'Erstfeld', description: 'SRK-Klient:innen. 5 CHF. Anmeldung per Whatsapp…' },
@@ -225,7 +225,51 @@ export default {
         { id: 3102, category: 'musik', title: 'TriffAltdorf – Offenes Singen', time: 'Freitag, 31. Oktober, 19:00 – 21:00 Uhr', location: 'TriffAltdorf, Dätwylerstrasse 15, 6460 Altdorf', description: 'Gemeinsames Singen, offen für alle. (Quelle: UriAgenda) ' }
       ],
       'December 2025': [
-        { id: 202, category: 'kultur', title: 'Kreativ-Treff (Haus für Kunst Uri)', time: 'Freitag, 5. Dezember, 14:00 – 16:45 Uhr', location: 'Haus für Kunst Uri', description: 'Offenes Kreativangebot. (Quelle: uri.ch)' }
+        { id: 202, category: 'kultur', title: 'Kreativ-Treff (Haus für Kunst Uri)', time: 'Freitag, 5. Dezember, 14:00 – 16:45 Uhr', location: 'Haus für Kunst Uri', description: 'Offenes Kreativangebot. (Quelle: uri.ch)' },
+        { id: 4001, category: 'beratung', title: 'Landratssession 10. Dezember 2025', time: 'Mittwoch, 10. Dezember', location: '', description: 'Politische Sitzung.' },
+        { id: 4002, category: 'beratung', title: 'Session des Urner Landrats', time: 'Mittwoch, 10. Dezember', location: 'Rathaus', description: 'Organisator: Zurfluh Org' },
+        { id: 4003, category: 'beratung', title: 'Unterlagen für eine der nächsten Sessionen', time: 'Donnerstag, 11. Dezember', location: '', description: 'Noch nicht definitiv einer Session zugewiesen.' },
+        { id: 4004, category: 'beratung', title: 'Trauercafé', time: 'Montag, 15. Dezember', location: 'Haus für Kunst Uri', description: 'Organisator: Gesundheitsförderung Uri' }
+      ],
+      'February 2026': [
+        { id: 5001, category: 'beratung', title: 'Session des Urner Landrats', time: 'Mittwoch, 4. Februar', location: 'Rathaus', description: 'Organisator: Zurfluh Org' },
+        { id: 5002, category: 'beratung', title: 'Landratssession 4. Februar 2026', time: 'Mittwoch, 4. Februar', location: '', description: '' }
+      ],
+      'March 2026': [
+        { id: 5003, category: 'beratung', title: 'Eidgenössische und kantonale Abstimmungen', time: 'Sonntag, 8. März', location: 'Gemeinde', description: 'Die Abstimmungen werden in den Gemeinden durchgeführt. Wie wird der Stimmzettel richtig ausgefüllt?' },
+        { id: 5004, category: 'beratung', title: 'Session des Urner Landrats', time: 'Mittwoch, 18. März', location: 'Rathaus', description: 'Organisator: Zurfluh Org' },
+        { id: 5005, category: 'beratung', title: 'Landratssession 18. März 2026', time: 'Mittwoch, 18. März', location: '', description: '' }
+      ],
+      'April 2026': [
+        { id: 5006, category: 'beratung', title: 'Session des Urner Landrats', time: 'Mittwoch, 22. April', location: 'Rathaus', description: 'Organisator: Zurfluh Org' },
+        { id: 5007, category: 'beratung', title: 'Landratssession 22. April 2026', time: 'Mittwoch, 22. April', location: '', description: '' }
+      ],
+      'May 2026': [
+        { id: 5008, category: 'beratung', title: 'Session des Urner Landrats', time: 'Mittwoch, 27. Mai', location: 'Rathaus', description: 'Organisator: Zurfluh Org' },
+        { id: 5009, category: 'beratung', title: 'Landratssession 27. Mai 2026', time: 'Mittwoch, 27. Mai', location: '', description: '' }
+      ],
+      'June 2026': [
+        { id: 5010, category: 'beratung', title: 'Eidgenössische und kantonale Abstimmungen', time: 'Sonntag, 14. Juni', location: 'Gemeinde', description: 'Die Abstimmungen werden in den Gemeinden durchgeführt.' },
+        { id: 5011, category: 'beratung', title: 'Session des Urner Landrats', time: 'Mittwoch, 24. Juni', location: 'Rathaus', description: 'Organisator: Zurfluh Org' },
+        { id: 5012, category: 'beratung', title: 'Landratssession 24. Juni 2026', time: 'Mittwoch, 24. Juni', location: '', description: '' }
+      ],
+      'August 2026': [
+        { id: 5013, category: 'beratung', title: 'Session des Urner Landrats', time: 'Mittwoch, 26. August', location: 'Rathaus', description: 'Organisator: Zurfluh Org' },
+        { id: 5014, category: 'beratung', title: 'Landratssession 26. August 2026', time: 'Mittwoch, 26. August', location: '', description: '' }
+      ],
+      'September 2026': [
+        { id: 5015, category: 'beratung', title: 'Eidgenössische und kantonale Abstimmungen', time: 'Sonntag, 27. September', location: 'Gemeinde', description: 'Die Abstimmungen werden in den Gemeinden durchgeführt.' },
+        { id: 5016, category: 'beratung', title: 'Session des Urner Landrats', time: 'Mittwoch, 30. September', location: 'Rathaus', description: 'Organisator: Zurfluh Org' },
+        { id: 5017, category: 'beratung', title: 'Landratssession 30. September 2026', time: 'Mittwoch, 30. September', location: '', description: '' }
+      ],
+      'November 2026': [
+        { id: 5018, category: 'beratung', title: 'Session des Urner Landrats', time: 'Mittwoch, 11. November', location: 'Rathaus', description: 'Organisator: Zurfluh Org' },
+        { id: 5019, category: 'beratung', title: 'Landratssession 11. November 2026', time: 'Mittwoch, 11. November', location: '', description: '' },
+        { id: 5020, category: 'beratung', title: 'Eidgenössische und kantonale Abstimmungen', time: 'Sonntag, 29. November', location: 'Gemeinde', description: 'Die Abstimmungen werden in den Gemeinden durchgeführt.' }
+      ],
+      'December 2026': [
+        { id: 5021, category: 'beratung', title: 'Session des Urner Landrats', time: 'Mittwoch, 16. Dezember', location: 'Rathaus', description: 'Organisator: Zurfluh Org' },
+        { id: 5022, category: 'beratung', title: 'Landratssession 16. Dezember 2026', time: 'Mittwoch, 16. Dezember', location: '', description: '' }
       ]
     })
 
