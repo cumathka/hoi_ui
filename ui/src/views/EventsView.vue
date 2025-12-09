@@ -39,7 +39,7 @@
             Diese Veranstaltungen bieten Ihnen die Gelegenheit, Kontakte zu knüpfen, Erfahrungen auszutauschen und sich
             in einem
             unterstützenden Umfeld weiterzuentwickeln. Kommen Sie vorbei und werden Sie Teil unserer lebendigen
-            Gemeinschaft!
+            Gemeinschaft.
           </p>
 
           <!-- Calendar (CDN/global FullCalendar v6) -->
@@ -131,17 +131,18 @@
               <button class="btn py-1 px-3" @click="clearDateFilter">Filter aufheben</button>
             </div>
 
-            <div v-for="(events, date) in filteredEventsByCategoryAndDate" :key="date"
+            <div v-for="group in sortedEventGroups" :key="group.monthKey"
               class="mb-4 border border-gray-100 rounded-lg overflow-hidden">
               <div
                 class="flex justify-between items-center px-6 py-4 bg-gray-100 cursor-pointer hover:bg-gray-200 transition-colors"
-                @click="toggleEventDetails(date)">
-                <h3 class="text-h5 text-cyan-700">{{ date }}</h3>
-                <span :class="['transition-transform', expandedDate === date ? 'rotate-180' : '']">▼</span>
+                @click="toggleEventDetails(group.monthKey)">
+                <h3 class="text-h5 text-cyan-700">{{ group.monthKey }}</h3>
+                <span :class="['transition-transform', expandedDate === group.monthKey ? 'rotate-180' : '']">▼</span>
               </div>
 
-              <div v-if="expandedDate === date" class="px-6 py-4 bg-white">
-                <div v-for="event in events" :key="event.id" class="mb-6 last:mb-0 bg-gray-50 p-4 rounded-lg shadow-sm">
+              <div v-if="expandedDate === group.monthKey" class="px-6 py-4 bg-white">
+                <div v-for="event in group.events" :key="event.id"
+                  class="mb-6 last:mb-0 bg-gray-50 p-4 rounded-lg shadow-sm">
                   <h4 class="text-h5 text-cyan-700 mb-1">{{ event.title }}</h4>
                   <p class="body-small text-gray-600 mb-1">{{ event.time }}</p>
                   <p class="body-small text-gray-700 mb-1" v-if="event.location">📍 {{ event.location }}</p>
@@ -159,7 +160,7 @@
 </template>
 
 <script>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
 
 export default {
   name: 'EventsView',
@@ -491,25 +492,41 @@ export default {
       return filtered
     }
 
-    const filteredEventsByCategoryAndDate = () => {
+    const sortedEventGroups = computed(() => {
       const base = filteredEventsByCategory()
-      if (!selectedDate.value) return base
-      const target = new Date(selectedDate.value)
-      const yyyy = target.getFullYear()
-      const mm = target.getMonth() + 1
-      const dd = target.getDate()
-      const filtered = {}
+      const groups = []
+
       Object.entries(base).forEach(([monthKey, list]) => {
-        const f = list.filter(ev => {
-          const iso = parseDateFromKeyAndTime(monthKey, ev.time)
-          if (!iso) return false
-          const d = new Date(iso)
-          return d.getFullYear() === yyyy && (d.getMonth() + 1) === mm && d.getDate() === dd
-        })
-        if (f.length) filtered[monthKey] = f
+        let events = list
+
+        // Apply date filter if selected
+        if (selectedDate.value) {
+          const target = new Date(selectedDate.value)
+          const yyyy = target.getFullYear()
+          const mm = target.getMonth() + 1
+          const dd = target.getDate()
+
+          events = list.filter(ev => {
+            const iso = parseDateFromKeyAndTime(monthKey, ev.time)
+            if (!iso) return false
+            const d = new Date(iso)
+            return d.getFullYear() === yyyy && (d.getMonth() + 1) === mm && d.getDate() === dd
+          })
+        }
+
+        if (events.length > 0) {
+          // Determine sort date for the group (month)
+          const dateStr = parseDateFromKeyAndTime(monthKey, '1.')
+          const dateObj = dateStr ? new Date(dateStr) : new Date(9999, 0, 1)
+          groups.push({ monthKey, events, dateObj })
+        }
       })
-      return filtered
-    }
+
+      // Sort groups by month date
+      groups.sort((a, b) => a.dateObj - b.dateObj)
+
+      return groups
+    })
 
     const selectedDateEvents = () => {
       if (!selectedDate.value) return []
@@ -546,7 +563,7 @@ export default {
       getEventMapLink,
       addToCalendar,
       // Derived
-      filteredEventsByCategoryAndDate,
+      sortedEventGroups,
       selectedDateEvents,
       focusCalendarEvent
     }
