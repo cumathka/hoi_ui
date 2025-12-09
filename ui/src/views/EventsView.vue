@@ -186,7 +186,7 @@ export default {
       { id: 'beratung', name: 'Beratung' }
     ])
 
-    // Source data grouped by month headings
+    // Source data grouped by month headings- test info
     const eventsByMonth = ref({
       'August 2025': [
         { id: 1, category: 'kurs', title: 'treffpunkt26 Wiedereröffnung', time: 'ab 11. August', location: 'Hagenstr. 26, Altdorf', description: 'Der treffpunkt26 hat ab dem Montag, 11. August 2025, wieder geöffnet.' },
